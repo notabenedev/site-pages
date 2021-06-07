@@ -12,8 +12,8 @@
     "require": {
         "portedcheese/base-settings": "@dev",
         "portedcheese/seo-integration": "@dev",
-        "portedcheese/ajax-forms": "@dev"
-
+        "portedcheese/ajax-forms": "@dev",
+        "portedcheese/admin-site-menu": "@dev"
     },
     "autoload": {
         "psr-4": {
