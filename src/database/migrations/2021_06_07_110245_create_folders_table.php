@@ -21,17 +21,15 @@ class CreateFoldersTable extends Migration
             $table->tinyText('short')
                 ->nullable()
                 ->comment("Краткое описанрие");
-
             $table->string('main_image')
                 ->nullable();
+
             $table->unsignedBigInteger("parent_id")
                 ->nullable()
                 ->comment("Родительская папка");
-
             $table->unsignedBigInteger("priority")
                 ->default(0)
                 ->comment("Приоритет");
-
             $table->dateTime("published_at")
                 ->nullable()
                 ->comment("Дата публикации");
