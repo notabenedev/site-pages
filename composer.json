@@ -1,0 +1,30 @@
+{
+    "name": "notabenedev/site-pages",
+    "description": "Pages",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "N.Borisova",
+            "email": "n.borisova@me.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "portedcheese/base-settings": "@dev",
+        "portedcheese/seo-integration": "@dev",
+        "portedcheese/ajax-forms": "@dev"
+
+    },
+    "autoload": {
+        "psr-4": {
+            "notabenedev\\SitePages\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "notabenedev\\SitePages\\PagesServiceProvider"
+            ]
+        }
+    }
+}
