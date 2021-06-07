@@ -14,8 +14,8 @@ class PagesServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/config/pages.php', 'pages')
-        );
+            __DIR__.'/config/pages.php', 'pages');
+        
     }
 
     /**
