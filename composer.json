@@ -17,13 +17,13 @@
     },
     "autoload": {
         "psr-4": {
-            "notabenedev\\SitePages\\": "src/"
+            "Notabenedev\\SitePages\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "notabenedev\\SitePages\\PagesServiceProvider"
+                "Notabenedev\\SitePages\\PagesServiceProvider"
             ]
         }
     }
