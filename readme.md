@@ -1,6 +1,8 @@
 #Pages
 Install
 
+Заполнить конфиг необходимыми данными
+
 php artisan migrate
 
 php artisan vendor:publish --provider="Notabenedev\SitePages\PagesServiceProvider" --tag=public --force

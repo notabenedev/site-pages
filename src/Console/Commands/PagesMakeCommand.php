@@ -101,6 +101,7 @@ class PagesMakeCommand extends BaseConfigModelCommand
         $all = $this->option("all");
 
         if ($this->option('menu') || $all) {
+
             $this->makeMenu();
         }
 
@@ -132,7 +133,7 @@ class PagesMakeCommand extends BaseConfigModelCommand
             return;
         }
 
-        $title = "Страницы";
+        $title = config("site-pages.sitePackageName");
         $itemData = [
             "title" => $title,
             "menu_id" => $menu->id,

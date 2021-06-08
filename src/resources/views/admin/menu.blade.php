@@ -12,7 +12,7 @@
            aria-controls="#collapse-folders-menu"
            aria-expanded="{{ $active ? "true" : "false" }}">
             <i class="fas fa-stream"></i>
-            <span>Страницы</span>
+            <span>{{ config("site-pages.sitePackageName") }}</span>
         </a>
 
         <div id="collapse-folders-menu"
@@ -20,9 +20,9 @@
              data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 @can("viewAny", \App\Folder::class)
-                    <a href="{{ route("admin.folders.index") }}"
+                    <a href="{{ route("admin.".config("site-pages.FoldersRouteName").".index") }}"
                        class="collapse-item{{ strstr($currentRoute, ".folders.") !== false ? " active" : "" }}">
-                        <span>Иерархия</span>
+                        <span>{{ config("site-pages.siteFoldersName") }}</span>
                     </a>
                 @endcan
 
@@ -39,14 +39,14 @@
            aria-haspopup="true"
            aria-expanded="false">
             <i class="fas fa-stream"></i>
-            Категории
+            {{ config("site-pages.sitePackageName") }}
         </a>
 
         <div class="dropdown-menu" aria-labelledby="folders-menu">
             @can("viewAny", \App\Folder::class)
-                <a href="{{ route("admin.folders.index") }}"
+                <a href="{{ route("admin.".config("site-pages.FoldersRouteName").".index") }}"
                    class="dropdown-item">
-                    Список
+                    {{ config("site-pages.siteFoldersName") }}
                 </a>
             @endcan
 
