@@ -20,7 +20,7 @@
              data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 @can("viewAny", \App\Folder::class)
-                    <a href="{{ route("admin.".config("site-pages.FoldersRouteName").".index") }}"
+                    <a href="{{ route("admin.folders.index") }}"
                        class="collapse-item{{ strstr($currentRoute, ".folders.") !== false ? " active" : "" }}">
                         <span>{{ config("site-pages.siteFoldersName") }}</span>
                     </a>
@@ -44,7 +44,7 @@
 
         <div class="dropdown-menu" aria-labelledby="folders-menu">
             @can("viewAny", \App\Folder::class)
-                <a href="{{ route("admin.".config("site-pages.FoldersRouteName").".index") }}"
+                <a href="{{ route("admin.folders.index") }}"
                    class="dropdown-item">
                     {{ config("site-pages.siteFoldersName") }}
                 </a>

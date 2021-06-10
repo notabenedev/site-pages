@@ -32,6 +32,7 @@ class PagesServiceProvider extends ServiceProvider
         $imagecache[] = 'storage/folders';
         app()->config['imagecache.paths'] = $imagecache;
 
+
         //Подключаем роуты
         if (config("site-pages.folderAdminRoutes")) {
             $this->loadRoutesFrom(__DIR__."/routes/admin/folder.php");
@@ -61,7 +62,5 @@ class PagesServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(
             __DIR__.'/config/site-pages.php', 'pages');
-        //$this->app->make('Http\Controllers\Admin\FolderController');
-
     }
 }

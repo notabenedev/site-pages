@@ -1,12 +1,16 @@
 <?php
 return [
     "email" => "dev@gis4biz.ru",
-    "sitePackageName" => "Страницы",
+    "sitePackageName" => "Структура",
     "siteFoldersName" => "Иерархия",
     "sitePagesName" => "Страницы",
 
-    "FoldersRouteName" => "pages",
-    "PageRouteName" => "page",
+    "foldersRouteName" => "pages",
+    "folderRouteName" => "page",
+    "pagesRouteName" => "pages",
+    "pageRouteName" => "page",
+
+    "folderNest" => 3,
 
     "folderAdminRoutes" => true,
     "folderSiteRoutes" => true,

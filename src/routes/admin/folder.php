@@ -8,9 +8,25 @@ Route::group([
     "as" => "admin.",
     "prefix" => "admin",
 ], function () {
-    Route::resource( config("site-pages.FoldersRouteName") , FolderController::class);
+    Route::resource( "folders" , FolderController::class);
 
+    Route::group([
+        "prefix" => "folders/{folder}",
+        "as" => "folders.",
+    ], function () {
+        //опубликовать
+        Route::put("publish", [FolderController::class,"publish"])
+            ->name("publish");
+        // Добавить подкатегорию.
+        Route::get("create-child", [FolderController::class,"create"])
+            ->name("create-child");
+        // Сохранить подкатегорию.
+        Route::post("store-child", [FolderController::class,"store"])
+            ->name("store-child");
+        // Meta.
+        Route::get("metas", [FolderController::class,"metas"])
+            ->name("metas");
+    });
 
 }
-
 );
