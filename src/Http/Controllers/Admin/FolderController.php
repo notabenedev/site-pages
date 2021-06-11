@@ -8,6 +8,7 @@ use App\Folder;
 use App\Meta;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
+use Notabenedev\SitePages\Facades\FolderActions;
 use phpDocumentor\Reflection\Types\Void_;
 
 
@@ -31,7 +32,7 @@ class FolderController extends Controller
         $view = $request->get("view","default");
         $isTree = $view == "tree";
         if ($isTree) {
-            $folders = [];
+            $folders = FolderActions::getTree();
         }
         else {
             $collection = Folder::query()
@@ -276,5 +277,30 @@ class FolderController extends Controller
                 ->back();
         }
 
+    }
+    /**
+     * Изменить приоритет
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function changeItemsPriority(Request $request)
+    {
+        $data = $request->get("items", false);
+        if ($data) {
+            $result = FolderActions::saveOrder($data);
+            if ($result) {
+                return response()
+                    ->json("Порядок сохранен");
+            }
+            else {
+                return response()
+                    ->json("Ошибка, что то пошло не так");
+            }
+        }
+        else {
+            return response()
+                ->json("Ошибка, недостаточно данных");
+        }
     }
 }

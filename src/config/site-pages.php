@@ -1,16 +1,18 @@
 <?php
 return [
     "email" => "dev@gis4biz.ru",
-    "sitePackageName" => "Структура",
-    "siteFoldersName" => "Иерархия",
+    "sitePackageName" => "Категории страниц",
+    "siteFoldersName" => "Структура",
     "sitePagesName" => "Страницы",
 
-    "foldersRouteName" => "pages",
-    "folderRouteName" => "page",
+    "foldersRouteName" => "items",
+    "folderRouteName" => "item",
     "pagesRouteName" => "pages",
     "pageRouteName" => "page",
 
-    "folderNest" => 3,
+    "folderFacade" => \Notabenedev\SitePages\Helpers\FolderActionsManager::class,
+
+    "folderNest" => 4,
 
     "folderAdminRoutes" => true,
     "folderSiteRoutes" => true,

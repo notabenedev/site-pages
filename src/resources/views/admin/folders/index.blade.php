@@ -10,7 +10,7 @@
         <div class="card">
             <div class="card-body">
                 @if ($isTree)
-{{--                    @include("site-pages::admin.folders.includes.tree", ["categories" => $categories])--}}
+                    @include("site-pages::admin.folders.includes.tree", ["folders" => $folders])
                 @else
                     @include("site-pages::admin.folders.includes.table-list", ["folders" => $folders])
                 @endif

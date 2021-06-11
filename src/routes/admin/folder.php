@@ -10,6 +10,10 @@ Route::group([
 ], function () {
     Route::resource( "folders" , FolderController::class);
 
+    // Изменить вес у категорий.
+    Route::put("folders/tree/priority", [FolderController::class,"changeItemsPriority"])
+        ->name("folders.item-priority");
+
     Route::group([
         "prefix" => "folders/{folder}",
         "as" => "folders.",
@@ -17,6 +21,7 @@ Route::group([
         //опубликовать
         Route::put("publish", [FolderController::class,"publish"])
             ->name("publish");
+
         // Добавить подкатегорию.
         Route::get("create-child", [FolderController::class,"create"])
             ->name("create-child");

@@ -1,23 +1,23 @@
-@can("update", \App\Category::class)
-    <admin-category-list :structure="{{ json_encode($categories) }}"
-                         :nesting="{{ config("category-product.categoryNest") }}"
-                         :update-url="'{{ route("admin.categories.item-priority") }}'">
-    </admin-category-list>
+@can("update", \App\Folder::class)
+    <admin-folder-list :structure="{{ json_encode($folders) }}"
+                         :nesting="{{ config("site-pages.folderNest") }}"
+                         :update-url="'{{ route("admin.folders.item-priority") }}'">
+    </admin-folder-list>
 @else
     <ul>
-        @foreach ($categories as $category)
+        @foreach ($folders as $folder)
             <li>
-                @can("view", \App\Category::class)
-                    <a href="{{ route('admin.categories.show', ['category' => $category["slug"]]) }}"
+                @can("view", \App\Folder::class)
+                    <a href="{{ route('admin.folders.show', ['folder' => $folder["slug"]]) }}"
                        class="btn btn-link">
-                        {{ $category["title"] }}
+                        {{ $folder["title"] }}
                     </a>
                 @else
-                    <span>{{ $category['title'] }}</span>
+                    <span>{{ $folder['title'] }}</span>
                 @endcan
-                <span class="badge badge-secondary">{{ count($category["children"]) }}</span>
-                @if (count($category["children"]))
-                    @include("category-product::admin.categories.includes.tree", ['categories' => $category["children"]])
+                <span class="badge badge-secondary">{{ count($folder["children"]) }}</span>
+                @if (count($folder["children"]))
+                    @include("site-pages::admin.folders.includes.tree", ['folders' => $folder["children"]])
                 @endif
             </li>
         @endforeach

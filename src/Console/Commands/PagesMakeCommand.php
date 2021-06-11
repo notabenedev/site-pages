@@ -19,7 +19,8 @@ class PagesMakeCommand extends BaseConfigModelCommand
     {--menu : Config menu}
     {--models : Export models}
     {--controllers : Export controllers}
-    {--policies : Export and create rules}
+    {--policies : Export and create rules} 
+    {--vue : Export vue}
     {--only-default : Create only default rules}';
 
     /**
@@ -76,7 +77,8 @@ class PagesMakeCommand extends BaseConfigModelCommand
      * @var array
      */
     protected $vueIncludes = [
-        'admin' => [],
+        'admin' => [ 'admin-folder-list' => "FolderListComponent",
+        ],
         'app' => [],
     ];
 
@@ -118,6 +120,12 @@ class PagesMakeCommand extends BaseConfigModelCommand
             $this->makeRules();
 
         }
+
+        if ($this->option("vue") || $all) {
+            $this->makeVueIncludes("admin");
+            $this->makeVueIncludes("app");
+        }
+
     }
 
 

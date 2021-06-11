@@ -43,6 +43,13 @@ class PagesServiceProvider extends ServiceProvider
         
         //подключаем шаблоны
         $this ->loadViewsFrom(__DIR__."/resources/views", "site-pages");
+
+        // Assets.
+        $this->publishes([
+            __DIR__ . '/resources/js/components' => resource_path('js/components/vendor/site-pages'),
+//            __DIR__ . '/resources/js/scripts' => resource_path('js/vendor/site-pages'),
+//            __DIR__ . "/resources/sass" => resource_path("sass/vendor/site-pages")
+        ], 'public');
         
         //Console
         if ($this->app->runningInConsole()){
@@ -62,5 +69,17 @@ class PagesServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(
             __DIR__.'/config/site-pages.php', 'pages');
+        $this->initFacades();
+    }
+
+    /**
+     * Подключение Facade.
+     */
+    protected function initFacades()
+    {
+        $this->app->singleton("folder-actions", function () {
+            $class = config("site-pages.folderFacade");
+            return new $class;
+        });
     }
 }
