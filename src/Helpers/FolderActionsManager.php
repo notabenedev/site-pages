@@ -206,4 +206,46 @@ class FolderActionsManager
         }
         return [$tree, $noParent];
     }
+
+    /**
+     * Admin breadcrumbs
+     *
+     * @param Folder $folder
+     * @param bool $isPagePage
+     * @return array
+     *
+     */
+    public function getAdminBreadcrumb(Folder $folder, $isPagePage = false)
+    {
+        $breadcrumb = [];
+        if (! empty($folder->parent)) {
+            $breadcrumb = $this->getAdminBreadcrumb($folder->parent);
+        }
+        else {
+            $breadcrumb[] = (object) [
+                "title" => config("site-pages.sitePackageName"),
+                "url" => route("admin.folders.index"),
+                "active" => false,
+            ];
+        }
+        $routeParams = Route::current()->parameters();
+        $isPagePage = $isPagePage && ! empty($routeParams["page"]);
+        $active = ! empty($routeParams["folder"]) &&
+            $routeParams["folder"]->id == $folder->id &&
+            ! $isPagePage;
+        $breadcrumb[] = (object) [
+            "title" => $folder->title,
+            "url" => route("admin.folders.show", ["folder" => $folder]),
+            "active" => $active,
+        ];
+//        if ($isPagePage) {
+//            $page = $routeParams["page"];
+//            $breadcrumb[] = (object) [
+//                "title" => $page->title,
+//                "url" => route("admin.pages.show", ["page" => $page]),
+//                "active" => true,
+//            ];
+//        }
+        return $breadcrumb;
+    }
 }
