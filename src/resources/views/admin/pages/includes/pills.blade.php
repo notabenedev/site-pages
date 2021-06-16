@@ -10,6 +10,13 @@
                             Список
                         </a>
                     </li>
+
+                    <li class="nav-item">
+                        <a href="{{ route("admin.folders.pages.tree", ["folder" => $folder]) }}"
+                           class="nav-link{{ $currentRoute === "admin.folders.pages.tree" ? " active" : "" }}">
+                            Приоритет
+                        </a>
+                    </li>
                 @endcan
 
                 @can("create", \App\Page::class)
@@ -60,25 +67,25 @@
                         @endcan
                     @endcan
 
-{{--                    @can("delete", $product)--}}
-{{--                        <li class="nav-item">--}}
-{{--                            <button type="button" class="btn btn-link nav-link"--}}
-{{--                                    data-confirm="{{ "delete-form-product-{$product->id}" }}">--}}
-{{--                                <i class="fas fa-trash-alt text-danger"></i>--}}
-{{--                            </button>--}}
-{{--                            <confirm-form :id="'{{ "delete-form-product-{$product->id}" }}'">--}}
-{{--                                <template>--}}
-{{--                                    <form action="{{ route('admin.products.destroy', ['product' => $product]) }}"--}}
-{{--                                          id="delete-form-product-{{ $product->id }}"--}}
-{{--                                          class="btn-group"--}}
-{{--                                          method="post">--}}
-{{--                                        @csrf--}}
-{{--                                        @method("delete")--}}
-{{--                                    </form>--}}
-{{--                                </template>--}}
-{{--                            </confirm-form>--}}
-{{--                        </li>--}}
-{{--                    @endcan--}}
+                    @can("delete", $page)
+                        <li class="nav-item">
+                            <button type="button" class="btn btn-link nav-link"
+                                    data-confirm="{{ "delete-form-page-{$page->id}" }}">
+                                <i class="fas fa-trash-alt text-danger"></i>
+                            </button>
+                            <confirm-form :id="'{{ "delete-form-page-{$page->id}" }}'">
+                                <template>
+                                    <form action="{{ route('admin.pages.destroy', ['page' => $page]) }}"
+                                          id="delete-form-page-{{ $page->id }}"
+                                          class="btn-group"
+                                          method="post">
+                                        @csrf
+                                        @method("delete")
+                                    </form>
+                                </template>
+                            </confirm-form>
+                        </li>
+                    @endcan
                 @endif
             </ul>
         </div>

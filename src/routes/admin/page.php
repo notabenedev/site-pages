@@ -8,14 +8,14 @@ Route::group([
     "as" => "admin.",
     "prefix" => "admin",
 ], function () {
+    //folder pages tree
+    Route::get("folders/{folder}/pages/tree", [PageController::class, "tree"])
+        ->name("folders.pages.tree");
     //folder pages
     Route::resource( "folders.pages" , PageController::class)->shallow();
     //all pages
     Route::get("pages", [PageController::class,"index"])
         ->name("pages.index");
-    // Изменить вес у страницы.
-//    Route::put("folders/tree/priority", [PageController::class,"changeItemsPriority"])
-//        ->name("folders.item-priority");
 
     Route::group([
         "prefix" => "pages/{page}",

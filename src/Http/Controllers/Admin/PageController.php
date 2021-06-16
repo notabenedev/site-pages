@@ -235,4 +235,29 @@ class PageController extends Controller
 
     }
 
+    /**
+     * Tree
+     *
+     * @param Folder $folder
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     *
+     */
+
+    public function tree(Folder $folder)
+    {
+        $this->authorize("update", Page::class);
+        $collection = $folder->pages()->orderBy("priority")->get();
+        $groups = [];
+        foreach ($collection as $item) {
+            $groups[] = [
+                "name" => $item->title,
+                "id" => $item->id,
+            ];
+        }
+        return view ("site-pages::admin.pages.tree", ["groups" => $groups, "folder" => $folder]);
+    }
+
+
+
 }
