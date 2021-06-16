@@ -4,7 +4,8 @@ namespace Notabenedev\SitePages;
 
 use Illuminate\Support\ServiceProvider;
 use Notabenedev\SitePages\Console\Commands\PagesMakeCommand;
-use Notabenedev\SitePages\Models\Folder;
+use App\Folder;
+use App\Page;
 
 class PagesServiceProvider extends ServiceProvider
 {
@@ -16,7 +17,7 @@ class PagesServiceProvider extends ServiceProvider
     public function boot()
     {
         //Публикация конфигурации
-        $this->publishes([__DIR__.'/config/pages.php' => config_path('pages.php'),
+        $this->publishes([__DIR__.'/config/site-pages.php' => config_path('site-pages.php'),
                 ], 'config');
 
         //Подключение миграций
@@ -25,17 +26,21 @@ class PagesServiceProvider extends ServiceProvider
         // Подключение метатегов.
         $seo = app()->config["seo-integration.models"];
         $seo["folders"] = Folder::class;
+        $seo["pages"] = Page::class;
         app()->config["seo-integration.models"] = $seo;
 
         // Подключаем изображения.
         $imagecache = app()->config['imagecache.paths'];
         $imagecache[] = 'storage/folders';
+        $imagecache[] = 'storage/pages';
+        $imagecache[] = 'storage/pages/gallery';
         app()->config['imagecache.paths'] = $imagecache;
 
 
         //Подключаем роуты
         if (config("site-pages.folderAdminRoutes")) {
             $this->loadRoutesFrom(__DIR__."/routes/admin/folder.php");
+            $this->loadRoutesFrom(__DIR__."/routes/admin/page.php");
         }
 //        if (config("site-pages.folderSiteRoutes")) {
 //            $this->loadRoutesFrom(__DIR__ . "/routes/site/folder.php");

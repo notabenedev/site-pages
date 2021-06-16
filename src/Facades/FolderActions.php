@@ -6,10 +6,10 @@ use Illuminate\Support\Facades\Facade;
 use Notabenedev\SitePages\Helpers\FolderActionsManager;
 
 /**
-
-
  *
- * @see CategoryActionsManager
+ * Class FolderActions
+ * @package Notabenedev\SitePages\Facades
+ *
  */
 class FolderActions extends Facade
 {

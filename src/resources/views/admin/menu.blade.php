@@ -25,7 +25,12 @@
                         <span>{{ config("site-pages.siteFoldersName") }}</span>
                     </a>
                 @endcan
-
+                    @can("viewAny", \App\Page::class)
+                        <a href="{{ route("admin.pages.index") }}"
+                           class="collapse-item{{ strstr($currentRoute, ".pages.") !== false ? " active" : "" }}">
+                            <span>{{ config("site-pages.sitePagesName") }}</span>
+                        </a>
+                    @endcan
             </div>
         </div>
     </li>
@@ -49,6 +54,12 @@
                     {{ config("site-pages.siteFoldersName") }}
                 </a>
             @endcan
+                @can("viewAny", \App\Page::class)
+                    <a href="{{ route("admin.pages.index") }}"
+                       class="collapse-item{{ strstr($currentRoute, ".pages.") !== false ? " active" : "" }}">
+                        <span>{{ config("site-pages.sitePagesName") }}</span>
+                    </a>
+                @endcan
 
         </div>
     </li>

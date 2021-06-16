@@ -42,13 +42,13 @@ class PagesMakeCommand extends BaseConfigModelCommand
      * The models to  be exported
      * @var array
      */
-    protected $models = ["Folder"];
+    protected $models = ["Folder","Page"];
 
     /**
      * Make Controllers
      */
     protected $controllers = [
-        "Admin" => ["FolderController"],
+        "Admin" => ["FolderController","PageController"],
         "Site" => [],
     ];
 
@@ -58,10 +58,15 @@ class PagesMakeCommand extends BaseConfigModelCommand
      *
      */
     protected $ruleRules = [
-        ["title" => "Иерархия страниц",
+        ["title" => "Структура страниц",
         "slug" => "folders",
         "policy" => "FolderPolicy",
          ],
+        ["title" => "Страницы",
+        "slug" => "pages",
+        "policy" => "PagePolicy",
+         ],
+
     ];
 
     /**

@@ -4,6 +4,7 @@ namespace Notabenedev\SitePages\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\App;
 use PortedCheese\BaseSettings\Traits\ShouldImage;
 use PortedCheese\BaseSettings\Traits\ShouldSlug;
 use PortedCheese\SeoIntegration\Traits\ShouldMetas;
@@ -49,6 +50,12 @@ class Folder extends Model
         return $this->hasMany(\App\Folder::class, "parent_id");
     }
 
+    /**
+     * Get parent publish status
+     *
+     * @return \Illuminate\Support\Carbon|mixed
+     */
+
     public function isParentPublished(){
 
         $parent = $this->parent()->first();
@@ -56,11 +63,37 @@ class Folder extends Model
 
     }
 
+    /**
+     * Change publish status
+     *
+     */
+
     public function publish()
     {
         $this->published_at = $this->published_at  ? null : now();
         $this->save();
     }
 
- 
+    /**
+     * Folder pages
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function pages()
+    {
+        return $this->hasMany(\App\Page::class);
+    }
+
+    /**
+     * Уровень вложенности.
+     *
+     * @return int
+     */
+    public function getNestingAttribute()
+    {
+        if (empty($this->parent_id)) {
+            return 1;
+        }
+        return $this->parent->nesting + 1;
+    }
 }

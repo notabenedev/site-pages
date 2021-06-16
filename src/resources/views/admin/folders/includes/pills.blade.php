@@ -83,16 +83,14 @@
                         </li>
                     @endcan
 
-
-
-{{--                    @can("viewAny", \App\Page::class)--}}
-{{--                        <li class="nav-item">--}}
-{{--                            <a href="{{ route("admin.folders.".config("site-pages.pagesRouteName").".index", ["folder" => $folder]) }}"--}}
-{{--                               class="nav-link{{ strstr($currentRoute, "".config("site-pages.pagesRouteName").".") !== false ? " active" : "" }}">--}}
-{{--                                {{ config("site-pages.sitePagesName") }}--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                    @endcan--}}
+                    @can("viewAny", \App\Page::class)
+                        <li class="nav-item">
+                            <a href="{{ route("admin.folders.".config("site-pages.pagesRouteName").".index", ["folder" => $folder]) }}"
+                               class="nav-link{{ strstr($currentRoute, "".config("site-pages.pagesRouteName").".") !== false ? " active" : "" }}">
+                                {{ config("site-pages.sitePagesName") }}
+                            </a>
+                        </li>
+                    @endcan
 
                     @can("delete", $folder)
                         <li class="nav-item">
