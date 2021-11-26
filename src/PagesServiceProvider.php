@@ -33,9 +33,13 @@ class PagesServiceProvider extends ServiceProvider
         $imagecache = app()->config['imagecache.paths'];
         $imagecache[] = 'storage/folders';
         $imagecache[] = 'storage/pages';
-        $imagecache[] = 'storage/pages/gallery';
+        $imagecache[] = 'storage/gallery/pages';
         app()->config['imagecache.paths'] = $imagecache;
 
+        // Подключаем галерею.
+        $gallery = app()->config["gallery.models"];
+        $gallery["pages"] = Page::class;
+        app()->config["gallery.models"] = $gallery;
 
         //Подключаем роуты
         if (config("site-pages.folderAdminRoutes")) {

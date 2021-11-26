@@ -11,8 +11,7 @@ use PortedCheese\SeoIntegration\Traits\ShouldMetas;
 
 class Page extends Model
 {
-    use HasFactory;
-    use ShouldMetas, ShouldSlug, ShouldImage, ShouldGallery;
+    use HasFactory, ShouldMetas, ShouldSlug, ShouldImage, ShouldGallery;
 
     protected $fillable = [
         'title',

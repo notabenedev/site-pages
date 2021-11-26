@@ -79,7 +79,10 @@ class PageController extends Controller
     {
         $this->storeValidator($request->all());
         $page = $folder->pages()->create($request->all());
-
+        /**
+         * @var Page $page
+         */
+        $page->uploadImage($request, "pages", "image");
         return redirect()
             ->route("admin.pages.show", ["page" => $page])
             ->with("success", "Добавлено");
@@ -150,6 +153,10 @@ class PageController extends Controller
         $this->updateValidator($request->all(), $page);
         // Обновление.
         $page->update($request->all());
+        /**
+         * @var Page $page
+         */
+        $page->uploadImage($request, "pages", "image");
 
         //$page->clearCache();
         return redirect()
@@ -256,6 +263,20 @@ class PageController extends Controller
             ];
         }
         return view ("site-pages::admin.pages.tree", ["groups" => $groups, "folder" => $folder]);
+    }
+
+    /**
+     * Page Gallery
+     *
+     * @param Page $page
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function gallery(Page $page)
+    {
+        $this->authorize("update", $page);
+        $folder = $page->folder;
+        return view("site-pages::admin.pages.gallery", compact("folder", "page"));
     }
 
 

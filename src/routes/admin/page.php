@@ -28,6 +28,10 @@ Route::group([
         // Meta.
         Route::get("metas", [PageController::class,"metas"])
             ->name("metas");
+
+        // Галерея.
+        Route::get("gallery", [PageController::class,"gallery"])
+            ->name("gallery");
     });
 
 }

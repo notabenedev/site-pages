@@ -13,7 +13,7 @@
                     @img([
                     "image" => $image,
                     "template" => "medium",
-                    "lightbox" => "lightGroup" . $folder->id,
+                    "lightbox" => "lightGroup" . $page->id,
                     "imgClass" => "rounded mb-2",
                     "grid" => [],
                     ])
@@ -72,6 +72,18 @@
                         <dt class="col-sm-3">Описание:</dt>
                         <dd class="col-sm-9">
                             <div>{!! $page->description !!}</div>
+                        </dd>
+                    @endif
+                    @if ($page->accent)
+                        <dt class="col-sm-3">Акцент:</dt>
+                        <dd class="col-sm-9">
+                            <div>{!! $page->accent !!}</div>
+                        </dd>
+                    @endif
+                    @if ($page->comment)
+                        <dt class="col-sm-3">Комментарий:</dt>
+                        <dd class="col-sm-9">
+                            <div>{!! $page->comment !!}</div>
                         </dd>
                     @endif
 

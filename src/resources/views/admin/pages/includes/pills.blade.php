@@ -46,12 +46,12 @@
                             </a>
                         </li>
 
-{{--                        <li class="nav-item">--}}
-{{--                            <a href="{{ route("admin.products.gallery", ["product" => $product]) }}"--}}
-{{--                               class="nav-link{{ $currentRoute === "admin.products.gallery" ? " active" : "" }}">--}}
-{{--                                Галерея--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
+                        <li class="nav-item">
+                            <a href="{{ route("admin.pages.gallery", ["page" => $page]) }}"
+                               class="nav-link{{ $currentRoute === "admin.pages.gallery" ? " active" : "" }}">
+                                Галерея
+                            </a>
+                        </li>
                     @endcan
 
 
