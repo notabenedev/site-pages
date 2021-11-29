@@ -46,10 +46,7 @@ class PagesServiceProvider extends ServiceProvider
             $this->loadRoutesFrom(__DIR__."/routes/admin/folder.php");
             $this->loadRoutesFrom(__DIR__."/routes/admin/page.php");
         }
-//        if (config("site-pages.folderSiteRoutes")) {
-//            $this->loadRoutesFrom(__DIR__ . "/routes/site/folder.php");
-//        }
-        
+
         //подключаем шаблоны
         $this ->loadViewsFrom(__DIR__."/resources/views", "site-pages");
 
@@ -88,6 +85,10 @@ class PagesServiceProvider extends ServiceProvider
     {
         $this->app->singleton("folder-actions", function () {
             $class = config("site-pages.folderFacade");
+            return new $class;
+        });
+        $this->app->singleton("page-actions", function () {
+            $class = config("site-pages.pageFacade");
             return new $class;
         });
     }

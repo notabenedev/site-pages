@@ -11,6 +11,7 @@ return [
     "pageRouteName" => "page",
 
     "folderFacade" => \Notabenedev\SitePages\Helpers\FolderActionsManager::class,
+    "pageFacade" => \Notabenedev\SitePages\Helpers\PageActionsManager::class,
 
     "folderNest" => 4,
 

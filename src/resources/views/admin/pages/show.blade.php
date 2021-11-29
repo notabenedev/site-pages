@@ -23,43 +23,43 @@
     @endif
     <div class="col-12">
         <div class="card">
-{{--            @can("update", $page)--}}
-{{--                <div class="card-header">--}}
-{{--                    <button type="button" class="btn btn-warning collapse show collapseChangeFolder" data-toggle="modal" data-target="#changeFolder">--}}
-{{--                        Изменить категорию--}}
-{{--                    </button>--}}
-{{--                    <div class="collapse mt-3 collapseChangeFolder">--}}
-{{--                        <form class="form-inline"--}}
-{{--                              method="post"--}}
-{{--                              action="{{ route("admin.pages.change-folder", ['page' => $page]) }}">--}}
-{{--                            @csrf--}}
-{{--                            @method('put')--}}
-{{--                            <div class="form-group">--}}
-{{--                                <label for="folder_id" class="sr-only">Категория </label>--}}
-{{--                                <div class="input-group">--}}
-{{--                                    <select name="folder_id"--}}
-{{--                                            id="folder_id"--}}
-{{--                                            class="custom-select">--}}
-{{--                                        @foreach($folders as $key => $value)--}}
-{{--                                            <option value="{{ $key }}"--}}
-{{--                                                    @if ($key == $folder->id)--}}
-{{--                                                    selected--}}
-{{--                                                    @elseif (old('folder_id'))--}}
-{{--                                                    selected--}}
-{{--                                                    @endif>--}}
-{{--                                                {{ $value }}--}}
-{{--                                            </option>--}}
-{{--                                        @endforeach--}}
-{{--                                    </select>--}}
-{{--                                    <div class="input-group-append">--}}
-{{--                                        <button class="btn btn-success" type="submit">Обновить</button>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </form>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            @endcan--}}
+            @can("update", $page)
+                <div class="card-header">
+                    <button type="button" class="btn btn-warning collapse show collapseChangeFolder" data-toggle="modal" data-target="#changeFolder">
+                        Изменить категорию
+                    </button>
+                    <div class="collapse mt-3 collapseChangeFolder">
+                        <form class="form-inline"
+                              method="post"
+                              action="{{ route("admin.pages.change-folder", ['page' => $page]) }}">
+                            @csrf
+                            @method('put')
+                            <div class="form-group">
+                                <label for="folder_id" class="sr-only">Категория </label>
+                                <div class="input-group">
+                                    <select name="folder_id"
+                                            id="folder_id"
+                                            class="custom-select">
+                                        @foreach($folders as $key => $value)
+                                            <option value="{{ $key }}"
+                                                    @if ($key == $folder->id)
+                                                    selected
+                                                    @elseif (old('folder_id'))
+                                                    selected
+                                                    @endif>
+                                                {{ $value }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    <div class="input-group-append">
+                                        <button class="btn btn-success" type="submit">Обновить</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            @endcan
             <div class="card-body">
                 <dl class="row">
                     @if ($page->short)

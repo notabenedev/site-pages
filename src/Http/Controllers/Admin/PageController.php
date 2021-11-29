@@ -9,6 +9,7 @@ use App\Folder;
 use App\Meta;
 use Illuminate\Support\Facades\Validator;
 use Notabenedev\SitePages\Facades\FolderActions;
+use Notabenedev\SitePages\Facades\PageActions;
 
 class PageController extends Controller
 {
@@ -279,6 +280,34 @@ class PageController extends Controller
         return view("site-pages::admin.pages.gallery", compact("folder", "page"));
     }
 
+
+    /**
+     * Изменить категорию
+     *
+     * @param Request $request
+     * @param Page $page
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function changeFolder(Request $request, Page $page)
+    {
+        $this->authorize("changeFolder", $page);
+        $this->changeFolderValidator($request->all());
+        PageActions::changeFolder($page, $request->get("folder_id"));
+        return redirect()
+            ->route("admin.pages.show", ["page" => $page])
+            ->with("success", "Категория изменена");
+    }
+
+
+    protected function changeFolderValidator($data)
+    {
+        Validator::make($data, [
+            "folder_id" => "required|exists:folders,id",
+        ], [], [
+            "folder_id" => "Категория",
+        ])->validate();
+    }
 
 
 }

@@ -29,6 +29,10 @@ Route::group([
         Route::get("metas", [PageController::class,"metas"])
             ->name("metas");
 
+        // Изменение категории.
+        Route::put("change-folder", [PageController::class,"changeFolder"])
+            ->name("change-folder");
+
         // Галерея.
         Route::get("gallery", [PageController::class,"gallery"])
             ->name("gallery");
