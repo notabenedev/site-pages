@@ -234,19 +234,30 @@ class FolderController extends Controller
      *
      * @param Folder $folder
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     *
      */
 
     public function publish(Folder $folder)
     {
+        $this->authorize("update", $folder);
+
         $published =  $folder->published_at;
         $children = $folder->children();
         $collection = $children->get();
         $parentPublished = $folder->isParentPublished();
 
-        // parent folders
+        //folder pages
+        $pages = $folder->pages()->get();
+        foreach ($pages as $page) {
+            if ($published || !$parentPublished)
+            $page->publish();
+        }
+
+        // child folders
         if ($collection->count() > 0) {
 
-            //unpublished parent folder and its children
+            //unpublished folder and child folders
             if ($published || !$parentPublished) {
                 $folder->published_at = null;
                 $folder->save();
@@ -256,7 +267,7 @@ class FolderController extends Controller
                 }
 
             } else {
-                //publish this parent folder
+                //publish folder
                 $folder->publish();
             }
             return

@@ -45,7 +45,7 @@
                             @endcan
                         </div>
                         @can("update", \App\Folder::class)
-                            <confirm-form :id="'{{ "publish-form-{$item->id}" }}'" text="Это изменит статус публикации! " confirm-text="Да, изменить!">
+                            <confirm-form :id="'{{ "publish-form-{$item->id}" }}'" text="Это изменит статус отображения на сайте! При снятии с публикации родителя будут отключены и все дочерние элементы и страницы. Невозможно опубликовать дочерний элемент, если не опубликован его родитель. " confirm-text="Да, изменить!">
                                 <template>
                                     <form action="{{ route('admin.folders.publish', ['folder' => $item]) }}"
                                           id="publish-form-{{ $item->id }}"
@@ -80,7 +80,7 @@
             @else
                 <td colspan="3">
             @endcanany
-                    <small>Внимание! При снятии с публикации родительского элемента будут отключены и все дочерние. Невозможно опубликовать дочерний элемент, если не опубликован его родитель.</small>
+
                 </td>
         </tr>
         </tbody>

@@ -218,14 +218,17 @@ class PageController extends Controller
     }
 
     /**
-     * Publish method
+     *
+     * Publish page
      *
      * @param Page $page
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     *
      */
-
     public function publish (Page $page)
     {
+        $this->authorize("update", $page);
         $published =  $page->published_at;
         $folderPublished = $page->isFolderPublished();
 
