@@ -9,16 +9,35 @@ Route::group([
     "prefix" => "admin",
 ], function () {
     //folder pages tree
-    Route::get("folders/{folder}/pages/tree", [PageController::class, "tree"])
+    Route::get(config("site-pages.foldersUrlName")."/{folder}/".config("site-pages.pagesUrlName")."/tree", [PageController::class, "tree"])
         ->name("folders.pages.tree");
+
     //folder pages
-    Route::resource( "folders.pages" , PageController::class)->shallow();
+    //Route::resource( "folders.pages" , PageController::class)->shallow();
+    Route::group([
+        "prefix" => config("site-pages.foldersUrlName")."/{folder}/".config("site-pages.pagesUrlName"),
+        "as" => "folders.pages.",
+    ], function (){
+        Route::get("", [PageController::class, "index"])->name("index");
+        Route::get("/create", [PageController::class, "create"])->name("create");
+        Route::post("", [PageController::class, "store"])->name("store");
+    });
+    Route::group([
+        "prefix" => config("site-pages.pagesUrlName")."/{page}",
+        "as" => "pages.",
+    ], function (){
+        Route::get("", [PageController::class, "show"])->name("show");
+        Route::get("/edit", [PageController::class, "edit"])->name("edit");
+        Route::put("", [PageController::class, "update"])->name("update");
+        Route::delete("", [PageController::class, "destroy"])->name("destroy");
+    });
+
     //all pages
-    Route::get("pages", [PageController::class,"index"])
+    Route::get(config("site-pages.pagesUrlName"), [PageController::class,"index"])
         ->name("pages.index");
 
     Route::group([
-        "prefix" => "pages/{page}",
+        "prefix" => config("site-pages.pagesUrlName")."/{page}",
         "as" => "pages.",
     ], function () {
         //опубликовать

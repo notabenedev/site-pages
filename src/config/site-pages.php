@@ -5,16 +5,19 @@ return [
     "siteFoldersName" => "Структура",
     "sitePagesName" => "Страницы",
 
-    "foldersRouteName" => "items",
-    "folderRouteName" => "item",
-    "pagesRouteName" => "pages",
-    "pageRouteName" => "page",
-
     "folderFacade" => \Notabenedev\SitePages\Helpers\FolderActionsManager::class,
     "pageFacade" => \Notabenedev\SitePages\Helpers\PageActionsManager::class,
 
     "folderNest" => 4,
 
     "folderAdminRoutes" => true,
+    "pageAdminRoutes" => true,
+
     "folderSiteRoutes" => true,
+    "pageSiteRoutes" => true,
+
+    "folderUrlName" => "folder",
+    "foldersUrlName" => "directories",
+    "pageUrlName" => "service",
+    "pagesUrlName" => "services",
 ];

@@ -49,7 +49,7 @@ class PagesMakeCommand extends BaseConfigModelCommand
      */
     protected $controllers = [
         "Admin" => ["FolderController","PageController"],
-        "Site" => [],
+        "Site" => ["FolderController"],
     ];
 
     /**

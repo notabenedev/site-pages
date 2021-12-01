@@ -8,14 +8,26 @@ Route::group([
     "as" => "admin.",
     "prefix" => "admin",
 ], function () {
-    Route::resource( "folders" , FolderController::class);
+    //Route::resource( "folders" , FolderController::class);
+    Route::group([
+        "prefix" => config("site-pages.foldersUrlName"),
+        "as" => "folders.",
+    ],function (){
+        Route::get("", [FolderController::class, "index"])->name("index");
+        Route::get("/create", [FolderController::class, "create"])->name("create");
+        Route::post("", [FolderController::class, "store"])->name("store");
+        Route::get("/{folder}", [FolderController::class, "show"])->name("show");
+        Route::get("/{folder}/edit", [FolderController::class, "edit"])->name("edit");
+        Route::put("/{folder}", [FolderController::class, "update"])->name("update");
+        Route::delete("/{folder}", [FolderController::class, "destroy"])->name("destroy");
+    });
 
     // Изменить вес у категорий.
-    Route::put("folders/tree/priority", [FolderController::class,"changeItemsPriority"])
+    Route::put(config("site-pages.foldersUrlName")."/tree/priority", [FolderController::class,"changeItemsPriority"])
         ->name("folders.item-priority");
 
     Route::group([
-        "prefix" => "folders/{folder}",
+        "prefix" => config("site-pages.foldersUrlName")."/{folder}",
         "as" => "folders.",
     ], function () {
         //опубликовать

@@ -85,8 +85,8 @@
 
                     @can("viewAny", \App\Page::class)
                         <li class="nav-item">
-                            <a href="{{ route("admin.folders.".config("site-pages.pagesRouteName").".index", ["folder" => $folder]) }}"
-                               class="nav-link{{ strstr($currentRoute, "".config("site-pages.pagesRouteName").".") !== false ? " active" : "" }}">
+                            <a href="{{ route("admin.folders.pages.index", ["folder" => $folder]) }}"
+                               class="nav-link{{ strstr($currentRoute, "pages.") !== false ? " active" : "" }}">
                                 {{ config("site-pages.sitePagesName") }}
                             </a>
                         </li>

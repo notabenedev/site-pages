@@ -44,7 +44,15 @@ class PagesServiceProvider extends ServiceProvider
         //Подключаем роуты
         if (config("site-pages.folderAdminRoutes")) {
             $this->loadRoutesFrom(__DIR__."/routes/admin/folder.php");
+        }
+        if (config("site-pages.folderSiteRoutes")) {
+            $this->loadRoutesFrom(__DIR__."/routes/site/folder.php");
+        }
+        if (config("site-pages.pageAdminRoutes")) {
             $this->loadRoutesFrom(__DIR__."/routes/admin/page.php");
+        }
+        if (config("site-pages.pageSiteRoutes")) {
+            $this->loadRoutesFrom(__DIR__."/routes/site/page.php");
         }
 
         //подключаем шаблоны
