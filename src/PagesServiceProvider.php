@@ -6,6 +6,14 @@ use Illuminate\Support\ServiceProvider;
 use Notabenedev\SitePages\Console\Commands\PagesMakeCommand;
 use App\Folder;
 use App\Page;
+use Notabenedev\SitePages\Filters\PagesGridLg4;
+use Notabenedev\SitePages\Filters\PagesGridLg6;
+use Notabenedev\SitePages\Filters\PagesGridMd4;
+use Notabenedev\SitePages\Filters\PagesGridMd6;
+use Notabenedev\SitePages\Filters\PagesGridSm12;
+use Notabenedev\SitePages\Filters\PagesGridSm6;
+use Notabenedev\SitePages\Filters\PagesGridXl4;
+use Notabenedev\SitePages\Filters\PagesGridXl6;
 
 class PagesServiceProvider extends ServiceProvider
 {
@@ -23,6 +31,16 @@ class PagesServiceProvider extends ServiceProvider
         //Подключение миграций
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
 
+        // Подключение шаблонов.
+        $this->loadViewsFrom(__DIR__ . '/resources/views', 'site-pages');
+
+        //Console
+        if ($this->app->runningInConsole()){
+            $this->commands([
+                PagesMakeCommand::class,
+            ]);
+        }
+
         // Подключение метатегов.
         $seo = app()->config["seo-integration.models"];
         $seo["folders"] = Folder::class;
@@ -35,6 +53,8 @@ class PagesServiceProvider extends ServiceProvider
         $imagecache[] = 'storage/pages';
         $imagecache[] = 'storage/gallery/pages';
         app()->config['imagecache.paths'] = $imagecache;
+        // Шаблоны изображений
+        $this->extendImages();
 
         // Подключаем галерею.
         $gallery = app()->config["gallery.models"];
@@ -55,22 +75,14 @@ class PagesServiceProvider extends ServiceProvider
             $this->loadRoutesFrom(__DIR__."/routes/site/page.php");
         }
 
-        //подключаем шаблоны
-        $this ->loadViewsFrom(__DIR__."/resources/views", "site-pages");
-
         // Assets.
         $this->publishes([
             __DIR__ . '/resources/js/components' => resource_path('js/components/vendor/site-pages'),
-//            __DIR__ . '/resources/js/scripts' => resource_path('js/vendor/site-pages'),
-//            __DIR__ . "/resources/sass" => resource_path("sass/vendor/site-pages")
+           // __DIR__ . '/resources/js/scripts' => resource_path('js/vendor/site-pages'),
+            __DIR__ . "/resources/sass" => resource_path("sass/vendor/site-pages")
         ], 'public');
         
-        //Console
-        if ($this->app->runningInConsole()){
-            $this->commands([
-                PagesMakeCommand::class,
-            ]);
-        }
+
       
     }
 
@@ -99,5 +111,24 @@ class PagesServiceProvider extends ServiceProvider
             $class = config("site-pages.pageFacade");
             return new $class;
         });
+    }
+
+    /**
+     * Стили для изображений.
+     */
+    private function extendImages()
+    {
+        $imagecache = app()->config['imagecache.templates'];
+
+        $imagecache['pages-grid-xl-6'] = PagesGridXl6::class;
+        $imagecache['pages-grid-xl-4'] = PagesGridXl4::class;
+        $imagecache['pages-grid-lg-6'] = PagesGridLg6::class;
+        $imagecache['pages-grid-lg-4'] = PagesGridLg4::class;
+        $imagecache['pages-grid-md-6'] = PagesGridMd6::class;
+        $imagecache['pages-grid-md-4'] = PagesGridMd4::class;
+        $imagecache['pages-grid-sm-6'] = PagesGridSm6::class;
+        $imagecache['pages-grid-sm-12'] = PagesGridSm12::class;
+
+        app()->config['imagecache.templates'] = $imagecache;
     }
 }

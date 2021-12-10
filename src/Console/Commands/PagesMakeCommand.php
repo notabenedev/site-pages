@@ -21,6 +21,7 @@ class PagesMakeCommand extends BaseConfigModelCommand
     {--controllers : Export controllers}
     {--policies : Export and create rules} 
     {--vue : Export vue}
+    {--scss : Export scss}
     {--only-default : Create only default rules}';
 
     /**
@@ -67,6 +68,17 @@ class PagesMakeCommand extends BaseConfigModelCommand
         "policy" => "PagePolicy",
          ],
 
+    ];
+
+    /**
+     * Стили.
+     *
+     * @var array
+     */
+    protected $scssIncludes = [
+        "app" => [
+            "site-pages/folder",
+        ],
     ];
 
     /**
@@ -129,6 +141,11 @@ class PagesMakeCommand extends BaseConfigModelCommand
         if ($this->option("vue") || $all) {
             $this->makeVueIncludes("admin");
             $this->makeVueIncludes("app");
+        }
+
+        if ($this->option("scss") || $all) {
+            $this->makeScssIncludes("app");
+            //$this->makeScssIncludes("admin");
         }
 
     }

@@ -1,0 +1,13 @@
+.folder{
+  &-teaser {
+    box-shadow: none;
+    &:hover{
+      box-shadow: $box-shadow;
+    }
+  }
+  &-image{
+    &__empty{
+      height: 100%;
+    }
+  }
+}

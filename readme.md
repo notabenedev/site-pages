@@ -12,6 +12,7 @@ Install
                         {--policies : Export and create rules}
                         {--only-default : Create default rules}
                         {--vue : Export vue components}
+                        {--scss: Export scss}
 ##Description
 - Категории страниц (папки) и страницы на сайте.
 - Категории могут быть вложенными. 

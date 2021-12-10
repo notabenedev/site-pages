@@ -20,4 +20,9 @@ return [
     "foldersUrlName" => "directories",
     "pageUrlName" => "service",
     "pagesUrlName" => "services",
+
+    "pagesLgGrid" => "4",
+    "foldersLgGrid" => "4",
+
+    "subFoldersPage" => true,
 ];

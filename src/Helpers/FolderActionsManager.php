@@ -238,14 +238,58 @@ class FolderActionsManager
             "url" => route("admin.folders.show", ["folder" => $folder]),
             "active" => $active,
         ];
-//        if ($isPagePage) {
-//            $page = $routeParams["page"];
-//            $breadcrumb[] = (object) [
-//                "title" => $page->title,
-//                "url" => route("admin.pages.show", ["page" => $page]),
-//                "active" => true,
-//            ];
-//        }
+        if ($isPagePage) {
+            $page = $routeParams["page"];
+            $breadcrumb[] = (object) [
+                "title" => $page->title,
+                "url" => route("admin.pages.show", ["page" => $page]),
+                "active" => true,
+            ];
+        }
+        return $breadcrumb;
+    }
+    /**
+     * Хлебные крошки для сайта.
+     *
+     * @param Folder $folder
+     * @param bool $isPage
+     * @param bool $parent
+     * @return array
+     */
+    public function getSiteBreadcrumb(Folder $folder, $isPage = false, $parent = false)
+    {
+        $breadcrumb = [];
+        if (! empty($folder->parent_id)) {
+            $breadcrumb = $this->getSiteBreadcrumb($folder->parent, false, true);
+        }
+        else {
+            $breadcrumb[] = (object) [
+                "title" => config("site-pages.sitePackageName"),
+                "url" => route("site.folders.index"),
+                "active" => false,
+            ];
+        }
+
+        $breadcrumb[] = (object) [
+            "title" => $folder->title,
+            "url" => route("site.folders.show", ["folder" => $folder]),
+            "active" => false,
+        ];
+
+        if ($isPage) {
+            $routeParams = Route::current()->parameters();
+            $page = $routeParams["page"];
+            $breadcrumb[] = (object) [
+                "title" => $page->title,
+                "url" => route("site.pages.show", ["page" => $page]),
+                "active" => true,
+            ];
+        }
+        elseif (! $parent) {
+            $length = count($breadcrumb);
+            $breadcrumb[$length - 1]->active = true;
+        }
+
         return $breadcrumb;
     }
 }
