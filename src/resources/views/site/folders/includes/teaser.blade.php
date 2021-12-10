@@ -1,6 +1,6 @@
 <div class="card folder-teaser h-100">
     <a href="{{ route("site.folders.show", ["folder" => $folder]) }}"
-       class="folder-image">
+       class="folder-teaser__image">
         @if ($folder->image)
             @pic([
             "image" => $folder->image,
@@ -9,8 +9,8 @@
             "imgClass" => "card-img-top",
             ])
         @else
-            <div class="folder-image__empty">
-                <svg class="folder-image__empty-ico">
+            <div class="folder-teaser__image-empty">
+                <svg class="folder-teaser__image-empty__ico">
                     <use xlink:href="#folder-image-empty"></use>
                 </svg>
             </div>

@@ -1,13 +1,33 @@
 .folder{
+
   &-teaser {
     box-shadow: none;
     &:hover{
       box-shadow: $box-shadow;
     }
+
+    &__image{
+      &__empty{
+        height: 100%;
+      }
+    }
+
+    &__title{
+      &:hover{
+        text-decoration: none;
+      }
+    }
   }
-  &-image{
-    &__empty{
-      height: 100%;
+
+  &-children{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-top: $grid-gutter-width / 2;
+    &__item {
+      margin-right: $grid-gutter-width / 2;
+      margin-bottom: $grid-gutter-width / 2;
     }
   }
 }

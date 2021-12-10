@@ -1,8 +1,8 @@
 <div class="row">
     <div class="col-12">
-        <div class="category-children">
+        <div class="folder-children">
             @foreach ($children as $child)
-                <div class="category-children__item">
+                <div class="folder-children__item">
                     <a href="{{ route("site.folders.show", ["folder" => $child]) }}"
                        class="btn btn-sm btn-outline-primary">
                         {{ $child->title }}

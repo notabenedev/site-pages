@@ -24,5 +24,5 @@ return [
     "pagesLgGrid" => "4",
     "foldersLgGrid" => "4",
 
-    "subFoldersPage" => true,
+    "subFoldersPage" => false,
 ];
