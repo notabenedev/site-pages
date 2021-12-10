@@ -25,4 +25,5 @@ return [
     "foldersLgGrid" => "4",
 
     "subFoldersPage" => false,
+    "folderPagesPerPage" => 18,
 ];

@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Notabenedev\SitePages\Console\Commands\PagesMakeCommand;
 use App\Folder;
 use App\Page;
+use Notabenedev\SitePages\Events\FolderChangePosition;
 use Notabenedev\SitePages\Filters\PagesGridLg4;
 use Notabenedev\SitePages\Filters\PagesGridLg6;
 use Notabenedev\SitePages\Filters\PagesGridMd4;
@@ -14,6 +15,9 @@ use Notabenedev\SitePages\Filters\PagesGridSm12;
 use Notabenedev\SitePages\Filters\PagesGridSm6;
 use Notabenedev\SitePages\Filters\PagesGridXl4;
 use Notabenedev\SitePages\Filters\PagesGridXl6;
+use Notabenedev\SitePages\Listeners\FolderIdsInfoClearCache;
+use Notabenedev\SitePages\Observers\FolderObserver;
+use PortedCheese\BaseSettings\Events\ImageUpdate;
 
 class PagesServiceProvider extends ServiceProvider
 {
@@ -81,8 +85,12 @@ class PagesServiceProvider extends ServiceProvider
            // __DIR__ . '/resources/js/scripts' => resource_path('js/vendor/site-pages'),
             __DIR__ . "/resources/sass" => resource_path("sass/vendor/site-pages")
         ], 'public');
-        
 
+        // Observers
+        $this->addObservers();
+
+        // Events
+        $this->addEvents();
       
     }
 
@@ -131,4 +139,21 @@ class PagesServiceProvider extends ServiceProvider
 
         app()->config['imagecache.templates'] = $imagecache;
     }
+
+    protected function addObservers()
+    {
+        if (class_exists(FolderObserver::class) && class_exists(Folder::class)) {
+            Folder::observe(FolderObserver::class);
+        }
+    }
+
+    protected function addEvents()
+    {
+        // Обновление галереи.
+        //$this->app["events"]->listen(ImageUpdate::class, PageGalleryChange::class);
+        // Изменение позиции категории.
+        $this->app["events"]->listen(FolderChangePosition::class, FolderIdsInfoClearCache::class);
+
+    }
+
 }

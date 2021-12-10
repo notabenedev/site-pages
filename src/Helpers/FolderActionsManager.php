@@ -292,4 +292,51 @@ class FolderActionsManager
 
         return $breadcrumb;
     }
+
+    /**
+     * Получить id всех подкатегорий.
+     *
+     * @param Folder $folder
+     * @param bool $includeSelf
+     * @return array
+     */
+    public function getFolderChildren(Folder $folder, $includeSelf = false)
+    {
+        $key = "folder-actions-getFolderChildren:{$folder->id}";
+        $children = Cache::rememberForever($key, function () use ($folder) {
+            $children = [];
+            $collection = Folder::query()
+                ->select("id")
+                ->where("parent_id", $folder->id)
+                ->get();
+            foreach ($collection as $child) {
+                $children[] = $child->id;
+                $folders = $this->geFolderChildren($child);
+                if (! empty($folders)) {
+                    foreach ($folders as $id) {
+                        $children[] = $id;
+                    }
+                }
+            }
+            return $children;
+        });
+        if ($includeSelf) {
+            $children[] = $folder->id;
+        }
+        return $children;
+    }
+
+    /**
+     * Очистить кэш списка id категорий.
+     *
+     * @param Folder $folder
+     */
+    public function forgetFolderChildrenIdsCache(Folder $folder)
+    {
+        Cache::forget("folder-actions-getFolderChildren:{$folder->id}");
+        $parent = $folder->parent;
+        if (! empty($parent)) {
+            $this->forgetFolderChildrenIdsCache($parent);
+        }
+    }
 }
