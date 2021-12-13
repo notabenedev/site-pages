@@ -9,7 +9,7 @@
         @include("site-pages::site.folders.includes.children", ["children" => $folders])
     @endif
 
-{{--    @include("site-pages::site.pages.includes.grid", ["pages" => $pages])--}}
+    @include("site-pages::site.pages.includes.grid", ["pages" => $pages])
 
 {{--    @if ($pages->lastPage() > 1)--}}
 {{--        <div class="row">--}}
@@ -19,3 +19,6 @@
 {{--        </div>--}}
 {{--    @endif--}}
 @endsection
+@push("svg")
+    @includeIf("site-pages::layouts.svg")
+@endpush

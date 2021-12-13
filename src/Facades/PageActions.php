@@ -2,8 +2,9 @@
 
 namespace Notabenedev\SitePages\Facades;
 
+
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Facade;
-use Notabenedev\SitePages\Helpers\PageActionsManager;
 
 /**
  *
@@ -17,4 +18,5 @@ class PageActions extends Facade
     {
         return "page-actions";
     }
+
 }

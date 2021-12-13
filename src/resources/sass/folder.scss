@@ -1,6 +1,9 @@
 .folder{
 
   &-teaser {
+    &-cover{
+      margin: 1rem 0;
+    }
     box-shadow: none;
     &:hover{
       box-shadow: $box-shadow;

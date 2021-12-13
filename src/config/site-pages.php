@@ -26,4 +26,5 @@ return [
 
     "subFoldersPage" => false,
     "folderPagesPerPage" => 18,
+    "showPageModal" => true,
 ];

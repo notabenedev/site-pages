@@ -3,10 +3,12 @@
 namespace Notabenedev\SitePages\Http\Controllers\Site;
 
 use App\Folder;
+use App\Page;
 use App\Http\Controllers\Controller;
 use App\Meta;
 use Illuminate\Http\Request;
 use Notabenedev\SitePages\Facades\FolderActions;
+use Notabenedev\SitePages\Facades\PageActions;
 
 class FolderController extends Controller
 {
@@ -15,6 +17,7 @@ class FolderController extends Controller
         $folders = Folder::query()
             ->with("image")
             ->whereNull("parent_id")
+            ->whereNotNull('published_at')
             ->orderBy("priority")
             ->get();
         $siteBreadcrumb = [
@@ -42,6 +45,7 @@ class FolderController extends Controller
     {
         $collection = $folder
             ->children()
+            ->whereNotNull("published_at")
             ->orderBy("priority");
         if (config("site-pages.subFoldersPage")) {
             $collection->with("image");
@@ -58,8 +62,8 @@ class FolderController extends Controller
             );
         }
         else {
-            $pages = $folder->pages()->get();
-
+            $pageIds = PageActions::getFolderPageIds($folder, true);
+            $pages = Page::query()->whereIn("id", $pageIds)->get();
             return view(
                 "site-pages::site.folders.show",
                 compact("folder", "folders", "pages", "request", "siteBreadcrumb", "pageMetas")

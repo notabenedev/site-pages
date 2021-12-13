@@ -10,6 +10,7 @@ use Notabenedev\SitePages\Helpers\FolderActionsManager;
  * Class FolderActions
  * @package Notabenedev\SitePages\Facades
  *
+ *
  */
 class FolderActions extends Facade
 {

@@ -22,6 +22,7 @@ class PagesMakeCommand extends BaseConfigModelCommand
     {--policies : Export and create rules} 
     {--vue : Export vue}
     {--scss : Export scss}
+    {--js : Export scripts}
     {--only-default : Create only default rules}';
 
     /**
@@ -78,6 +79,18 @@ class PagesMakeCommand extends BaseConfigModelCommand
     protected $scssIncludes = [
         "app" => [
             "site-pages/folder",
+            "site-pages/page",
+        ],
+    ];
+
+    /**
+     * Scripts.
+     *
+     * @var array
+     */
+    protected $jsIncludes = [
+        "app" => [
+            "site-pages/pages-modal",
         ],
     ];
 
@@ -146,6 +159,10 @@ class PagesMakeCommand extends BaseConfigModelCommand
         if ($this->option("scss") || $all) {
             $this->makeScssIncludes("app");
             //$this->makeScssIncludes("admin");
+        }
+
+        if ($this->option("js") || $all) {
+            $this->makeJsIncludes("app");
         }
 
     }

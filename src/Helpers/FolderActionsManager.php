@@ -11,8 +11,6 @@ use Illuminate\Support\Facades\Route;
 class FolderActionsManager
 {
 
-
-
     /**
      * Список всех категорий.
      *
@@ -311,7 +309,7 @@ class FolderActionsManager
                 ->get();
             foreach ($collection as $child) {
                 $children[] = $child->id;
-                $folders = $this->geFolderChildren($child);
+                $folders = $this->getFolderChildren($child);
                 if (! empty($folders)) {
                     foreach ($folders as $id) {
                         $children[] = $id;

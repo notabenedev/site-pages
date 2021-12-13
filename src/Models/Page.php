@@ -4,6 +4,7 @@ namespace Notabenedev\SitePages\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Cache;
 use PortedCheese\BaseSettings\Traits\ShouldGallery;
 use PortedCheese\BaseSettings\Traits\ShouldImage;
 use PortedCheese\BaseSettings\Traits\ShouldSlug;
@@ -92,5 +93,29 @@ class Page extends Model
         return datehelper()->changeTz($value);
     }
 
+    /**
+     * Данные для тизера.
+     *
+     * @return mixed
+     */
+    public function getTeaserData()
+    {
+        $key = "pageTeaserData:{$this->id}";
+        $id = $this->id;
+        return Cache::rememberForever($key, function () use ($id) {
+            return \App\Page::query()
+                ->where("id", $id)
+                ->with("cover")
+                ->first();
+        });
+    }
+
+    /**
+     * Очистить кэш.
+     */
+    public function clearCache()
+    {
+        Cache::forget("pageTeaserData:{$this->id}");
+    }
 
 }

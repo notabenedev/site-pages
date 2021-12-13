@@ -1,4 +1,9 @@
 <svg  xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="0" height="0" style="position:absolute; display: none; visibility: hidden; width: 0; height: 0;">
+    <symbol id="page-image-empty" viewBox="0 0 24 24">
+        <rect id="Rectangle" width="24" height="24" fill="none"></rect>
+        <path id="Rectangle_2" data-name="Rectangle 2" d="M0,0H8l6,6V18H0Z" transform="translate(5 3)" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="1.5"></path>
+        <path id="Rectangle_3" data-name="Rectangle 3" d="M6,6H0V0" transform="translate(13 3)" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="1.5"></path>
+    </symbol>
     <symbol id="folder-image-empty" viewBox="0 0 59 59">
         <g>
             <g>

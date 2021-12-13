@@ -2,6 +2,7 @@
 
 namespace Notabenedev\SitePages;
 
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\ServiceProvider;
 use Notabenedev\SitePages\Console\Commands\PagesMakeCommand;
 use App\Folder;
@@ -37,6 +38,35 @@ class PagesServiceProvider extends ServiceProvider
 
         // Подключение шаблонов.
         $this->loadViewsFrom(__DIR__ . '/resources/views', 'site-pages');
+        view()->composer([
+            "site-pages::site.folders.index", "site-pages::site.pages.includes.grid"
+        ], function (View $view) {
+            $colLg = config("site-pages.foldersLgGrid");
+            switch ($colLg){
+                case "4":
+                    $col = "col-12 col-sm-6 col-lg-4";
+                    $grid = [
+                        "pages-grid-sm-6" => 576,
+                        "pages-grid-md-6" => 768,
+                        "pages-grid-lg-6" => 992,
+                        "pages-grid-xl-6" => 992,
+                    ];
+                    break;
+
+                case "6":
+                    $col = "col-12 col-md-6";
+                    $grid = [
+                        "pages-grid-sm-12" => 576,
+                        "pages-grid-md-6" => 768,
+                        "pages-grid-lg-6" => 992,
+                        "pages-grid-xl-6" => 992,
+                    ];
+                    break;
+
+            };
+            $view->with("col", $col);
+            $view->with("grid", $grid);
+        });
 
         //Console
         if ($this->app->runningInConsole()){
@@ -82,7 +112,7 @@ class PagesServiceProvider extends ServiceProvider
         // Assets.
         $this->publishes([
             __DIR__ . '/resources/js/components' => resource_path('js/components/vendor/site-pages'),
-           // __DIR__ . '/resources/js/scripts' => resource_path('js/vendor/site-pages'),
+            __DIR__ . '/resources/js/scripts' => resource_path('js/vendor/site-pages'),
             __DIR__ . "/resources/sass" => resource_path("sass/vendor/site-pages")
         ], 'public');
 
