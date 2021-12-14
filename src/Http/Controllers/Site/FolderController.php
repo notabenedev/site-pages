@@ -43,31 +43,36 @@ class FolderController extends Controller
      */
     public function show(Request $request, Folder $folder)
     {
-        $collection = $folder
-            ->children()
-            ->whereNotNull("published_at")
-            ->orderBy("priority");
-        if (config("site-pages.subFoldersPage")) {
-            $collection->with("image");
-        }
-        $folders = $collection->get();
+        if ($folder->published_at){
+            $collection = $folder
+                ->children()
+                ->whereNotNull("published_at")
+                ->orderBy("priority");
+            if (config("site-pages.subFoldersPage")) {
+                $collection->with("image");
+            }
+            $folders = $collection->get();
 
-        $siteBreadcrumb = FolderActions::getSiteBreadcrumb($folder);
-        $pageMetas = Meta::getByModelKey($folder);
+            $siteBreadcrumb = FolderActions::getSiteBreadcrumb($folder);
+            $pageMetas = Meta::getByModelKey($folder);
 
-        if (config("site-pages.subFoldersPage") && $folders->count()) {
-            return view(
-                "site-pages::site.folders.index",
-                compact("folders", "folder", "siteBreadcrumb", "pageMetas")
-            );
+            if (config("site-pages.subFoldersPage") && $folders->count()) {
+                return view(
+                    "site-pages::site.folders.index",
+                    compact("folders", "folder", "siteBreadcrumb", "pageMetas")
+                );
+            }
+            else {
+                $pageIds = PageActions::getFolderPageIds($folder, true);
+                $pages = Page::query()->whereIn("id", $pageIds)->get();
+                return view(
+                    "site-pages::site.folders.show",
+                    compact("folder", "folders", "pages", "request", "siteBreadcrumb", "pageMetas")
+                );
+            }
         }
-        else {
-            $pageIds = PageActions::getFolderPageIds($folder, true);
-            $pages = Page::query()->whereIn("id", $pageIds)->get();
-            return view(
-                "site-pages::site.folders.show",
-                compact("folder", "folders", "pages", "request", "siteBreadcrumb", "pageMetas")
-            );
-        }
+        else
+            return redirect(route("site.folders.index"), 301);
+
     }
 }
