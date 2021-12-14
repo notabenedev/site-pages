@@ -34,6 +34,7 @@
 </div>
 <div class="col-12 col-lg-6">
     <div class="page-show__text-cover">
+
         <h1 class="page-show__title">{{ $page->title }}</h1>
         @isset($page->short)
             <div class="page-show__short">
@@ -45,32 +46,36 @@
                 {{ $page->accent }}
             </div>
         @endisset
-        <p>
-            <button class="collapse show page-show__btn btn btn-primary"
-               id="collapseFormBtnShow"
-               data-toggle="collapse"
-               data-target=".multi-collapse"
-               role="button"
-               aria-expanded="false"
-               aria-controls="collapseForm">
-                {{ config("site-pages.sitePageShowBtnName") }}
-            </button>
-        </p>
-        <div class="collapse multi-collapse page-show__collapse" id="collapseFormContainer">
-            form
 
-        </div>
-        <p>
-            <button class="collapse multi-collapse btn btn-secondary"
-                    type="button"
-                    id="collapseFormBtnHide"
-                    data-toggle="collapse"
-                    data-target=".multi-collapse"
-                    aria-expanded="false"
-                    aria-controls="collapseFormContainer collapseFormBtnShow">
-                Закрыть
-            </button>
-        </p>
+        @if(config("site-pages.sitePageShowBtnName"))
+            <p>
+                <button class="collapse show page-show__btn btn btn-primary"
+                        id="collapseFormBtnShow"
+                        data-toggle="collapse"
+                        data-target=".multi-collapse"
+                        role="button"
+                        aria-expanded="false"
+                        aria-controls="collapseForm">
+                    {{ config("site-pages.sitePageShowBtnName") }}
+                </button>
+            </p>
+            <p class="text-right">
+                <button class="collapse multi-collapse btn btn-secondary"
+                        type="button"
+                        id="collapseFormBtnHide"
+                        data-toggle="collapse"
+                        data-target=".multi-collapse"
+                        aria-expanded="false"
+                        aria-controls="collapseFormContainer collapseFormBtnShow"
+                title="Закрыть">
+                    <i class="fas fa-times"></i>
+                </button>
+            </p>
+            <div class="collapse multi-collapse page-show__collapse" id="collapseFormContainer">
+                @includeIf("site-pages::site.pages.includes.form", ["title" => $page->title, "folder" => $page->folder->title])
+            </div>
+
+        @endif
 
         <div class="description page-show__description">
             {!! $page->description !!}

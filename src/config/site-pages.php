@@ -5,11 +5,6 @@ return [
     "siteFoldersName" => "Структура",
     "sitePagesName" => "Страницы",
 
-    "sitePageAccentName" => "Цена",
-    "sitePageCommentName" => "Дополнительная информация",
-
-    "sitePageShowBtnName" => "Заказать",
-
     "folderFacade" => \Notabenedev\SitePages\Helpers\FolderActionsManager::class,
     "pageFacade" => \Notabenedev\SitePages\Helpers\PageActionsManager::class,
 
@@ -31,5 +26,11 @@ return [
 
     "subFoldersPage" => false,
     "folderPagesPerPage" => 18,
-    "showPageModal" => true,
+
+    "showPageModal" => false,
+    "sitePageAccentName" => "Цена",
+    "sitePageCommentName" => "Дополнительная информация",
+    "sitePageShowBtnName" => false,
+    "sitePageShowFormInputDate" => "Дата",
+    "sitePageShowFormInputTitle" => "Номер",
 ];

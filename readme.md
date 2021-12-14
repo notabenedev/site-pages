@@ -37,4 +37,16 @@ Install
 - folderFacade - класс для фасада действий с папками
 - pageFacade - класс для фасада действий со страницами
 
-- subFolderPage - включить страницу подкатегорий
+- subFolderPage - включить страницу подкатегорий (true,false)
+
+- pagesLgGrid - оторбражение сетки страниц (4,6)
+- foldersLgGrid - отображение сетки категорий (4,6)
+- folderPagesPerPage - категорий на странице
+
+- showPageModal - модальное окно страницы (false)
+- sitePageAccentName - название поля Accent
+- sitePageCommentName - название поля Comment
+- sitePageShowBtnName - название кнопки
+- sitePageShowFormInputDate - заголовок поля формы
+- sitePageShowFormInputTitle" - заголовок поля формы
+    
