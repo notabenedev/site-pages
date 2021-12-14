@@ -190,25 +190,18 @@ class FolderController extends Controller
     public function destroy(Folder $folder)
     {
         $parent = $folder->parent;
-        $children = $folder->children();
-        if ($children->count() > 0) {
-            return redirect()
-                ->route("admin.folders.show", ["folder" => $folder])
-                ->with("danger", "Не удалено! Для удаления категории необходимо предварительно удалить дочерние.");
-        } else {
-            $folder->delete();
-            if ($parent) {
-                return redirect()
-                    ->route("admin.folders.show", ["folder" => $parent])
-                    ->with("success", "Успешно удалено");
-            }
-            else {
-                return redirect()
-                    ->route("admin.folders.index")
-                    ->with("success", "Успешно удалено");
-            }
-        }
 
+        $folder->delete();
+        if ($parent) {
+            return redirect()
+                ->route("admin.folders.show", ["folder" => $parent])
+                ->with("success", "Успешно удалено");
+        }
+        else {
+            return redirect()
+                ->route("admin.folders.index")
+                ->with("success", "Успешно удалено");
+        }
     }
 
     /**
@@ -242,52 +235,10 @@ class FolderController extends Controller
     {
         $this->authorize("update", $folder);
 
-        $published =  $folder->published_at;
-        $children = $folder->children();
-        $collection = $children->get();
-        $parentPublished = $folder->isParentPublished();
+        $folder->publishCascade();
 
-        //folder pages
-        $pages = $folder->pages()->get();
-        foreach ($pages as $page) {
-            if ($published || !$parentPublished)
-            $page->publish();
-        }
-
-        // child folders
-        if ($collection->count() > 0) {
-
-            //unpublished folder and child folders
-            if ($published || !$parentPublished) {
-                $folder->published_at = null;
-                $folder->save();
-
-                foreach ($collection as $child) {
-                    $this->publish($child);
-                }
-
-            } else {
-                //publish folder
-                $folder->publish();
-            }
-            return
-             redirect()
-                ->back();
-
-        }
-        // leaf folders
-        else {
-            //can't publish the leaf when parent is unpublished
-            if (!$published  && !$parentPublished) {
-                return redirect()
-                    ->back();
-            }
-            $folder->publish();
-
-            return redirect()
-                ->back();
-        }
-
+        return redirect()
+            ->back();
     }
     /**
      * Изменить приоритет

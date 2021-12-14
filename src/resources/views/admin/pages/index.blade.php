@@ -101,7 +101,7 @@
                                         @can("update", $item)
                                             <confirm-form :id="'{{ "change-published-form-{$item->id}" }}'"
                                                           confirm-text="Да, изменить!"
-                                                          text="Это изменит статус отображения на сайте">
+                                                          text="Это изменит статус отображения на сайте! Невозможно опубликовать страницу, если не опубликована категория.">
                                                 <template>
                                                     <form id="change-published-form-{{ $item->id }}"
                                                           action="{{ route("admin.pages.publish", ['page' => $item]) }}"

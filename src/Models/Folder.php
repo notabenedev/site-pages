@@ -25,9 +25,6 @@ class Folder extends Model
     protected static function booting() {
 
         parent::booting();
-        static::creating(function (\App\Folder $model) {
-            if ($model->isParentPublished())  $model->published_at = now();
-        });
     }
 
     /**
@@ -67,11 +64,64 @@ class Folder extends Model
      * Change publish status
      *
      */
-
     public function publish()
     {
         $this->published_at = $this->published_at  ? null : now();
         $this->save();
+    }
+    /**
+     * Change publish status all children and pages
+     *
+     */
+
+    public function publishCascade()
+    {
+
+        $published =  $this->published_at;
+        $children = $this->children();
+        $collection = $children->get();
+        $parentPublished = $this->isParentPublished();
+
+        //folder pages
+        $pages = $this->pages()->get();
+        foreach ($pages as $page) {
+            if ($published || !$parentPublished)
+                $page->publish();
+        }
+
+        // child folders
+        if ($collection->count() > 0) {
+
+            //unpublished folder and child folders
+            if ($published || !$parentPublished) {
+                $this->published_at = null;
+                $this->save();
+
+                foreach ($collection as $child) {
+                    $this->publish($child);
+                }
+
+            } else {
+                //publish folder
+                $this->publish();
+            }
+            return
+                redirect()
+                    ->back();
+
+        }
+        // leaf folders
+        else {
+            //can't publish the leaf when parent is unpublished
+            if (!$published  && !$parentPublished) {
+                return redirect()
+                    ->back();
+            }
+            $this->publish();
+
+            return redirect()
+                ->back();
+        }
     }
 
     /**

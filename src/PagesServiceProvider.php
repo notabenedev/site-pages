@@ -18,6 +18,7 @@ use Notabenedev\SitePages\Filters\PagesGridXl4;
 use Notabenedev\SitePages\Filters\PagesGridXl6;
 use Notabenedev\SitePages\Listeners\FolderIdsInfoClearCache;
 use Notabenedev\SitePages\Observers\FolderObserver;
+use Notabenedev\SitePages\Observers\PageObserver;
 use PortedCheese\BaseSettings\Events\ImageUpdate;
 
 class PagesServiceProvider extends ServiceProvider
@@ -174,6 +175,9 @@ class PagesServiceProvider extends ServiceProvider
     {
         if (class_exists(FolderObserver::class) && class_exists(Folder::class)) {
             Folder::observe(FolderObserver::class);
+        }
+        if (class_exists(PageObserver::class) && class_exists(Page::class)) {
+            Page::observe(PageObserver::class);
         }
     }
 

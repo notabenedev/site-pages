@@ -30,12 +30,7 @@ class Page extends Model
     protected static function booting() {
 
         parent::booting();
-        static::creating(function (\App\Page $model) {
-            if ($model->isFolderPublished())  $model->published_at = now();
-        });
-        static::updating(function (\App\Page $model) {
-            if (!$model->isFolderPublished())  $model->published_at = null;
-        });
+
     }
 
 
