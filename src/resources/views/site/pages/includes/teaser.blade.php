@@ -1,7 +1,15 @@
-<div class="card page-teaser">
+<div class="card page-teaser h-100">
     <div class="page-teaser__image-cover">
-        <a href="{{ route("site.pages.show", ["page" => $page]) }}"
-           class="page-teaser__image">
+        <a class="page-teaser__image"
+           @if (config("site-pages.showPageModal"))
+           data-toggle="modal"
+           data-target="#getPageOrderModal"
+           data-whatever="{{ $page->id }}"
+           href="#"
+           @else
+           href="{{ route("site.pages.show", ["page" => $page]) }}"
+           @endif
+        >
             @if ($page->cover)
                 @pic([
                     "image" => $page->cover,
@@ -20,7 +28,15 @@
     </div>
     <div class="card-body page-teaser__body">
         <div class="page-teaser__info">
-            <a href="{{ route("site.pages.show", ["page" => $page]) }}" class="page-teaser__title">
+            <a class="page-teaser__title"
+               @if (config("site-pages.showPageModal"))
+               data-toggle="modal"
+               data-target="#getPageOrderModal"
+               data-whatever="{{ $page->id }}"
+               href="#"
+               @else
+               href="{{ route("site.pages.show", ["page" => $page]) }}"
+                    @endif>
                 {{ $page->title }}
             </a>
             @if ($page->short)

@@ -10,12 +10,14 @@ use App\Page;
 use Notabenedev\SitePages\Events\FolderChangePosition;
 use Notabenedev\SitePages\Filters\PagesGridLg4;
 use Notabenedev\SitePages\Filters\PagesGridLg6;
+use Notabenedev\SitePages\Filters\PagesGridMd12;
 use Notabenedev\SitePages\Filters\PagesGridMd4;
 use Notabenedev\SitePages\Filters\PagesGridMd6;
 use Notabenedev\SitePages\Filters\PagesGridSm12;
 use Notabenedev\SitePages\Filters\PagesGridSm6;
 use Notabenedev\SitePages\Filters\PagesGridXl4;
 use Notabenedev\SitePages\Filters\PagesGridXl6;
+use Notabenedev\SitePages\Filters\PagesShowThumb;
 use Notabenedev\SitePages\Listeners\FolderIdsInfoClearCache;
 use Notabenedev\SitePages\Observers\FolderObserver;
 use Notabenedev\SitePages\Observers\PageObserver;
@@ -163,10 +165,12 @@ class PagesServiceProvider extends ServiceProvider
         $imagecache['pages-grid-xl-4'] = PagesGridXl4::class;
         $imagecache['pages-grid-lg-6'] = PagesGridLg6::class;
         $imagecache['pages-grid-lg-4'] = PagesGridLg4::class;
+        $imagecache['pages-grid-md-12'] = PagesGridMd12::class;
         $imagecache['pages-grid-md-6'] = PagesGridMd6::class;
         $imagecache['pages-grid-md-4'] = PagesGridMd4::class;
         $imagecache['pages-grid-sm-6'] = PagesGridSm6::class;
         $imagecache['pages-grid-sm-12'] = PagesGridSm12::class;
+        $imagecache['pages-show-thumb'] = PagesShowThumb::class;
 
         app()->config['imagecache.templates'] = $imagecache;
     }

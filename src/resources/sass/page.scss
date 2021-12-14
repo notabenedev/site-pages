@@ -1,0 +1,124 @@
+.page{
+  &-show{
+    @mixin top-gallery-sizes($both: true) {
+      width: 100%;
+      //@if $both {
+      //  height: 100%;
+      //}
+      @include media-breakpoint-up(sm) {
+        width: 465px;
+        @if $both {
+          height: 310px;
+        }
+      }
+      @include media-breakpoint-up(md) {
+        width: 625px;
+        @if $both {
+          height: 416px;
+        }
+      }
+      @include media-breakpoint-up(lg) {
+        width: 385px;
+        @if $both {
+          height: 256px;
+        }
+      }
+      @include media-breakpoint-up(xl) {
+        width: 524px;
+        @if $both {
+          height: 355px;
+        }
+      }
+    }
+
+    &__cover {
+        background-color: $white;
+        border: 1px solid $gray-500;
+        padding-top: $grid-gutter-width;
+        padding-bottom: $grid-gutter-width;
+        @include border-radius($card-border-radius);
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__title {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    &__short{
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+
+    &__accent{
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 1.5rem;
+    }
+
+    &__description{
+      font-size: 0.875rem;
+      margin-top: $grid-gutter-width;
+    }
+
+    &__comment{
+      font-size: 0.875rem;
+      font-weight: 400;
+      color: $secondary;
+    }
+
+    &__collapse {
+      @include media-breakpoint-down(md) {
+          margin: 0 auto;
+      }
+    }
+
+
+    .page-gallery {
+      &-top {
+        position: relative;
+        overflow: hidden;
+        margin: 0 auto;
+        @include top-gallery-sizes;
+        display: block;
+        &.flickity-enabled .carousel-cell {
+          display: block !important;
+        }
+        .carousel-cell {
+          margin-right: 0.5*$grid-gutter-width;
+          @include top-gallery-sizes;
+
+          &:not(:first-child) {
+            display: none;
+          }
+
+          .figure > a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+      }
+        &-thumbs {
+          overflow: hidden;
+          margin: 0.5*$grid-gutter-width auto;
+          @include top-gallery-sizes(false);
+          height: 65px;
+          display: none;
+          &.flickity-enabled {
+            display: block;
+          }
+          .carousel-cell {
+            margin-right: 0.5*$grid-gutter-width;
+            width: 97px;
+            height: 65px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+      }
+  }
+}

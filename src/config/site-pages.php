@@ -8,6 +8,8 @@ return [
     "sitePageAccentName" => "Цена",
     "sitePageCommentName" => "Дополнительная информация",
 
+    "sitePageShowBtnName" => "Заказать",
+
     "folderFacade" => \Notabenedev\SitePages\Helpers\FolderActionsManager::class,
     "pageFacade" => \Notabenedev\SitePages\Helpers\PageActionsManager::class,
 
