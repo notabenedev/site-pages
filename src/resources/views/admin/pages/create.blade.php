@@ -92,7 +92,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="accent">Акцент</label>
+                        <label for="accent">{{ config("site-pages.sitePageAccentName") }}</label>
                         <input type="text"
                                id="accent"
                                maxlength="100"
@@ -108,7 +108,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="comment">Комментарий</label>
+                        <label for="comment">{{ config("site-pages.sitePageCommentName") }}</label>
                         <textarea class="form-control  @error("comment") is-invalid @enderror"
                                   name="comment"
                                   id="comment"

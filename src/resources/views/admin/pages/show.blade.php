@@ -75,13 +75,13 @@
                         </dd>
                     @endif
                     @if ($page->accent)
-                        <dt class="col-sm-3">Акцент:</dt>
+                        <dt class="col-sm-3">{{ config("site-pages.sitePageAccentName") }}:</dt>
                         <dd class="col-sm-9">
                             <div>{!! $page->accent !!}</div>
                         </dd>
                     @endif
                     @if ($page->comment)
-                        <dt class="col-sm-3">Комментарий:</dt>
+                        <dt class="col-sm-3">{{ config("site-pages.sitePageCommentName") }}:</dt>
                         <dd class="col-sm-9">
                             <div>{!! $page->comment !!}</div>
                         </dd>

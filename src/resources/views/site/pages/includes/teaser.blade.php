@@ -26,8 +26,8 @@
             @if ($page->short)
                 <div class="page-teaser__short">{{ $page->short }}</div>
             @endif
-            @if ($page->price)
-                <div class="page-teaser__price">{{ $page->price }}</div>
+            @if ($page->accent)
+                <div class="page-teaser__price">{{ $page->accent }}</div>
             @endif
         </div>
     </div>

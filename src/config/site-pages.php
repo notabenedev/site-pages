@@ -5,6 +5,9 @@ return [
     "siteFoldersName" => "Структура",
     "sitePagesName" => "Страницы",
 
+    "sitePageAccentName" => "Цена",
+    "sitePageCommentName" => "Дополнительная информация",
+
     "folderFacade" => \Notabenedev\SitePages\Helpers\FolderActionsManager::class,
     "pageFacade" => \Notabenedev\SitePages\Helpers\PageActionsManager::class,
 

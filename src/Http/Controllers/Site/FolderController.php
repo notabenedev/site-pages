@@ -64,7 +64,7 @@ class FolderController extends Controller
             }
             else {
                 $pageIds = PageActions::getFolderPageIds($folder, true);
-                $pages = Page::query()->whereIn("id", $pageIds)->get();
+                $pages = Page::query()->whereIn("id", $pageIds)->orderBy("priority")->get();
                 return view(
                     "site-pages::site.folders.show",
                     compact("folder", "folders", "pages", "request", "siteBreadcrumb", "pageMetas")
