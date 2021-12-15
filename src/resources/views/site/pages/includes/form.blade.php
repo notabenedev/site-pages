@@ -76,7 +76,7 @@
         <div class="col-12">
             <div class="btn-group"
                  role="group">
-                <button type="submit" class="btn btn-primary">Заказать</button>
+                <button type="submit" class="btn btn-primary">{{ config("site-pages.sitePageShowBtnName") }}</button>
             </div>
         </div>
     </div>

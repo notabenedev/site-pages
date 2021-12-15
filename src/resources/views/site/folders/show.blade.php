@@ -11,13 +11,13 @@
 
     @include("site-pages::site.pages.includes.grid", ["pages" => $pages])
 
-{{--    @if ($pages->lastPage() > 1)--}}
-{{--        <div class="row">--}}
-{{--            <div class="col-12">--}}
-{{--                {{ $pages->links() }}--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    @endif--}}
+    @if ($pages->lastPage() > 1)
+        <div class="row">
+            <div class="col-12">
+                {{ $pages->links() }}
+            </div>
+        </div>
+    @endif
 @endsection
 @push("svg")
     @includeIf("site-pages::layouts.svg")

@@ -4,6 +4,7 @@ namespace Notabenedev\SitePages\Helpers;
 
 
 use App\Folder;
+use App\Meta;
 use App\Page;
 use Illuminate\Support\Facades\Cache;
 use Notabenedev\SitePages\Facades\FolderActions;
@@ -81,5 +82,17 @@ class PageActionsManager
         if (! empty($folder->parent_id)) {
             $this->forgetFolderPageIds($folder->parent);
         }
+    }
+
+    public function getPageById($id){
+        return Page::find($id);
+    }
+
+    public function getPageGallery(Page $page){
+        return $page->images()->orderBy("weight")->get();
+    }
+
+    public function getPageMeta(Page $page){
+        return Meta::getByModelKey($page);
     }
 }

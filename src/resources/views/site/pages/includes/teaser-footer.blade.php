@@ -3,8 +3,7 @@
         <a class="btn btn-primary page-teaser__btn"
            @if (config("site-pages.showPageModal"))
            data-toggle="modal"
-           data-target="#getPageOrderModal"
-           data-whatever="{{ $page->id }}"
+           data-target="#showPage{{ $page->slug }}Modal"
            href="#"
            @else
            href="{{ route("site.pages.show", ["page" => $page]) }}"

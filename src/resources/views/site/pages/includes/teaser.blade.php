@@ -3,8 +3,7 @@
         <a class="page-teaser__image"
            @if (config("site-pages.showPageModal"))
            data-toggle="modal"
-           data-target="#getPageOrderModal"
-           data-whatever="{{ $page->id }}"
+           data-target="#showPage{{ $page->slug }}Modal"
            href="#"
            @else
            href="{{ route("site.pages.show", ["page" => $page]) }}"
@@ -31,8 +30,7 @@
             <a class="page-teaser__title"
                @if (config("site-pages.showPageModal"))
                data-toggle="modal"
-               data-target="#getPageOrderModal"
-               data-whatever="{{ $page->id }}"
+               data-target="#showPage{{ $page->slug }}Modal"
                href="#"
                @else
                href="{{ route("site.pages.show", ["page" => $page]) }}"
@@ -51,3 +49,8 @@
         @include("site-pages::site.pages.includes.teaser-footer")
     </div>
 </div>
+@if (config("site-pages.showPageModal"))
+    @include("site-pages::site.pages.includes.show-modal", [
+    "page" => $page,
+    ])
+@endif

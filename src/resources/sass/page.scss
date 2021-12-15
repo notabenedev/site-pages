@@ -1,4 +1,26 @@
+.pages-grid-col{
+  margin: 1rem 0;
+}
 .page{
+
+  &-modal{
+    @include media-breakpoint-up(xl){
+      max-width: 1110px;
+    }
+    @include media-breakpoint-only(lg){
+      max-width: 930px;
+    }
+    @include media-breakpoint-only(md){
+      max-width: 690px;
+    }
+    @include media-breakpoint-down(sm){
+      max-width: 510px;
+    }
+    @include media-breakpoint-down(xs){
+      max-width: 575px;
+    }
+  }
+
   &-show{
     @mixin top-gallery-sizes($both: true) {
       width: 100%;
@@ -26,14 +48,13 @@
       @include media-breakpoint-up(xl) {
         width: 524px;
         @if $both {
-          height: 355px;
+          height: 349px;
         }
       }
     }
 
     &__cover {
         background-color: $white;
-        border: 1px solid $gray-500;
         padding-top: $grid-gutter-width;
         padding-bottom: $grid-gutter-width;
         @include border-radius($card-border-radius);
@@ -117,6 +138,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
+
+            &.is-nav-selected{
+              background-color: red;
+            }
           }
         }
       }

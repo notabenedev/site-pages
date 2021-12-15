@@ -1,6 +1,5 @@
 (function ($) {
     $(document).ready(function (event) {
-        modalPageData('#getPageOrderModal');
         modalPageData('#getPageQuestionModal');
     });
 
@@ -13,7 +12,12 @@
                 // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
                 var modal = $(this)
                 modal.find('#input-whatever').val(recipient)
+                // var $gallery = modal.find('.page-gallery-top');
+                // $gallery.flickity('reloadCells');
+                // var $gallery = modal.find('.page-gallery-thumbs');
+                // $gallery.flickity('reloadCells');
             })
         }
     }
+
 })(jQuery);

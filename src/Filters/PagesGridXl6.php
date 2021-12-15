@@ -11,6 +11,6 @@ class PagesGridXl6 implements FilterInterface {
     public function applyFilter(File $image)
     {
         return $image
-            ->fit(540, 360);
+            ->fit(524, 349);
     }
 }
