@@ -17,12 +17,29 @@ Install
                         {--scss: Export scss}
 - npm install flickity
 - npm install flickity-as-nav-for
+    
+##Формы:
+    page-order-form: name*, phone*, (date*), (title*, folder*), message
+    page-question-form: name*, phone*, (title*), message
+    
+    
 ##Description
 - Категории страниц (папки) и страницы на сайте.
 - Категории могут быть вложенными. 
 - Страница относится к категории.
 
 ##Config
+
+Шаблон для меню:
+
+    site-pages::site.includes.folders-menu
+
+Выгрузка конфигурации:
+    
+    php artisan vendor:publish --provider="PortedCheese\CategoryProduct\ServiceProvider" --tag=config
+   
+Переменные:
+    
 - sitePackageName - название пакета
 - siteFoldersName - название структуры категорий (папок)
 - sitePagesName - название страниц

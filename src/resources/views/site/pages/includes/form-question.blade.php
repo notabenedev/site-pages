@@ -53,7 +53,7 @@
         <div class="col-12">
             <div class="btn-group"
                  role="group">
-                <button type="submit" class="btn btn-primary">{{ config("site-pages.sitePageShowBtnName") }}</button>
+                <button type="submit" class="btn btn-primary">Отправить</button>
             </div>
         </div>
     </div>

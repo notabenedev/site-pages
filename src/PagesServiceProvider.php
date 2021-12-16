@@ -8,6 +8,7 @@ use Notabenedev\SitePages\Console\Commands\PagesMakeCommand;
 use App\Folder;
 use App\Page;
 use Notabenedev\SitePages\Events\FolderChangePosition;
+use Notabenedev\SitePages\Facades\FolderActions;
 use Notabenedev\SitePages\Filters\PagesGridLg4;
 use Notabenedev\SitePages\Filters\PagesGridLg6;
 use Notabenedev\SitePages\Filters\PagesGridMd12;
@@ -70,6 +71,9 @@ class PagesServiceProvider extends ServiceProvider
             };
             $view->with("col", $col);
             $view->with("grid", $grid);
+        });
+        view()->composer("site-pages::site.includes.folders-menu", function (View $view){
+            $view->with("foldersTree", FolderActions::getTree());
         });
 
         //Console

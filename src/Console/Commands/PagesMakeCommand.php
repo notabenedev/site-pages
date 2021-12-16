@@ -80,6 +80,7 @@ class PagesMakeCommand extends BaseConfigModelCommand
         "app" => [
             "site-pages/folder",
             "site-pages/page",
+            "site-pages/folders-menu",
         ],
     ];
 

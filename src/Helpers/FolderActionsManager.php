@@ -197,6 +197,7 @@ class FolderActionsManager
                 "id" => $folder->id,
                 'children' => [],
                 "url" => route("admin.folders.show", ['folder' => $folder->slug]),
+                "siteUrl" => route("site.folders.show", ["folder" => $folder->slug]),
             ];
             if (empty($folder->parent_id)) {
                 $noParent[] = $folder->id;
