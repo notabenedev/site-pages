@@ -4,6 +4,7 @@ namespace Notabenedev\SitePages\Helpers;
 
 
 use App\Folder;
+use App\Image;
 use App\Meta;
 use App\Page;
 use Illuminate\Support\Facades\Cache;
@@ -103,4 +104,5 @@ class PageActionsManager
     public function getPageMeta(Page $page){
         return Meta::getByModelKey($page);
     }
+
 }

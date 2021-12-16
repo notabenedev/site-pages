@@ -15,6 +15,8 @@ Install
                         {--vue : Export vue components}
                         {--js : Export scripts}
                         {--scss: Export scss}
+- npm install flickity
+- npm install flickity-as-nav-for
 ##Description
 - Категории страниц (папки) и страницы на сайте.
 - Категории могут быть вложенными. 

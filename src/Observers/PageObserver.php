@@ -15,6 +15,16 @@ class PageObserver
     public function creating(Page $page){
         if ($page->isFolderPublished()) $page->published_at = now();
     }
+
+    /**
+     * После сохранения
+     *
+     * @param Page $page
+     */
+    public function created(Page $page){
+        PageActions::forgetFolderPageIds($page->folder);
+    }
+
     /**
      * Перед обновлением
      *
@@ -43,6 +53,7 @@ class PageObserver
     {
         // Очистить кэш.
         $page->clearCache();
+        PageActions::forgetFolderPageIds($page->folder);
     }
 
 }

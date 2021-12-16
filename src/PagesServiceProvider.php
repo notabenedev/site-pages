@@ -19,6 +19,7 @@ use Notabenedev\SitePages\Filters\PagesGridXl4;
 use Notabenedev\SitePages\Filters\PagesGridXl6;
 use Notabenedev\SitePages\Filters\PagesShowThumb;
 use Notabenedev\SitePages\Listeners\FolderIdsInfoClearCache;
+use Notabenedev\SitePages\Listeners\PageGalleryChange;
 use Notabenedev\SitePages\Observers\FolderObserver;
 use Notabenedev\SitePages\Observers\PageObserver;
 use PortedCheese\BaseSettings\Events\ImageUpdate;
@@ -188,7 +189,7 @@ class PagesServiceProvider extends ServiceProvider
     protected function addEvents()
     {
         // Обновление галереи.
-        //$this->app["events"]->listen(ImageUpdate::class, PageGalleryChange::class);
+        $this->app["events"]->listen(ImageUpdate::class, PageGalleryChange::class);
         // Изменение позиции категории.
         $this->app["events"]->listen(FolderChangePosition::class, FolderIdsInfoClearCache::class);
 

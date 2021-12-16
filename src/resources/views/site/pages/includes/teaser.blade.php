@@ -9,9 +9,10 @@
            href="{{ route("site.pages.show", ["page" => $page]) }}"
            @endif
         >
-            @if ($page->cover)
+{{--  use image->cover for first gallery's image --}}
+            @if ($page->image)
                 @pic([
-                    "image" => $page->cover,
+                    "image" => $page->image,
                     "template" => "pages-grid-sm-12",
                     "grid" => $grid,
                     "imgClass" => "card-img-top",
