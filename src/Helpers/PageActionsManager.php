@@ -7,7 +7,9 @@ use App\Folder;
 use App\Meta;
 use App\Page;
 use Illuminate\Support\Facades\Cache;
+use Notabenedev\SitePages\Events\PageListChange;
 use Notabenedev\SitePages\Facades\FolderActions;
+use Notabenedev\SitePages\Facades\PageActions;
 use PortedCheese\BaseSettings\Exceptions\PreventActionException;
 
 
@@ -33,6 +35,12 @@ class PageActionsManager
         }
         $page->folder_id = $folderId;
         $page->save();
+
+        //при переносле страницы в другую категорию меняется набор страниц у обоих категорий
+        event(new PageListChange($page->folder));
+        event(new PageListChange($original));
+        $this::forgetFolderPageIds($page->folder);
+        $this::forgetFolderPageIds($original);
 
         if (! $folder->published_at && $page->published_at) {
             $page->publish();
