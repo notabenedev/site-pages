@@ -17,7 +17,7 @@
         <a href="#"
            data-toggle="modal"
            data-target="#getPageQuestionModal"
-           data-whatever="{{ $page->title }}">
+           data-whatever="{{ $page->folder->title .": ". $page->title }}">
             Задать вопрос
         </a>
     </div>

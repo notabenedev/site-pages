@@ -1,4 +1,4 @@
-<form class="sending-form-custom position-relative" name="page-order-form">
+<form class="sending-form-custom position-relative" name="page-question-form">
     @hiddenCaptcha
     <div class="form-row">
         <div class="col-12">
@@ -21,37 +21,14 @@
                        class="form-control">
             </div>
         </div>
-
-        @if (config("site-pages.sitePageShowFormInputDate"))
-            <div class="col-12 col-md-6">
-                <div class="form-group">
-                    <label for="date{{ isset($modal) ? "-modal" : "-full" }}">{{ config("site-pages.sitePageShowFormInputDate") }} <span class="text-danger">*</span></label>
-                    <input type="date"
-                           id="date{{ isset($modal) ? "-modal" : "-full" }}"
-                           name="date"
-                           required
-                           class="form-control">
-                </div>
-            </div>
-        @endif
+        
         @if (config("site-pages.sitePageShowFormInputTitle"))
-            <div class="col-12 {{ config("site-pages.sitePageShowFormInputDate")? "col-md-6" : "" }}">
-                <div class="form-group">
-                    <label for="title{{ isset($modal) ? "-modal": "-full" }}">{{ config("site-pages.sitePageShowFormInputTitle") }} <span class="text-danger">*</span></label>
-                    <input type="text"
+            <div class="col-12">
+                    <input type="hidden"
                            id="title{{ isset($modal) ? "-modal" : "-full" }}"
                            name="title"
-                           value="{{ $title }}"
-                           required
-                           disabled
-                           class="form-control">
-                    <input type="hidden"
-                           id="folder{{ isset($modal) ? "-modal" : "-full" }}"
-                           name="folder"
-                           value="{{ $folder }}"
                            required
                            class="form-control">
-                </div>
             </div>
         @endif
         <div class="col-12">

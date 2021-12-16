@@ -18,6 +18,7 @@
             </div>
         </div>
     @endif
+    @include("site-pages::site.folders.includes.show-modal")
 @endsection
 @push("svg")
     @includeIf("site-pages::layouts.svg")
