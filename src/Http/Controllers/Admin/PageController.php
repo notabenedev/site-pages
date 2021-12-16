@@ -92,8 +92,8 @@ class PageController extends Controller
     protected function storeValidator($data)
     {
         Validator::make($data, [
-            "title" => ["required", "max:100", "unique:products,title"],
-            "slug" => ["nullable", "max:150", "unique:products,slug"],
+            "title" => ["required", "max:100", "unique:pages,title"],
+            "slug" => ["nullable", "max:150", "unique:pages,slug"],
             "image" => ["nullable", "image"],
             "short" => ["nullable", "max:500"],
             "description" => ["required"],

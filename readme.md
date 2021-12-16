@@ -4,6 +4,7 @@ Install
 - Заполнить конфиг необходимыми данными
 - php artisan migrate
 - php artisan vendor:publish --provider="Notabenedev\SitePages\PagesServiceProvider" --tag=public --force
+- php artisan vendor:publish --provider="Notabenedev\SitePages\PagesServiceProvider" --tag=config
 - php artisan make:pages
                         {--all : Run all}
                         {--menu : Config menu}
@@ -12,6 +13,7 @@ Install
                         {--policies : Export and create rules}
                         {--only-default : Create default rules}
                         {--vue : Export vue components}
+                        {--js : Export scripts}
                         {--scss: Export scss}
 ##Description
 - Категории страниц (папки) и страницы на сайте.

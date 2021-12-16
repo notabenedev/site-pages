@@ -67,7 +67,7 @@ class FolderController extends Controller
                 $pages = Page::query()
                     ->whereIn("id", $pageIds)
                     ->orderBy("priority")
-                    ->paginate(config("site-pages.folderPagesPerPage"));
+                    ->paginate(config("site-pages.folderPagesPerPage"))->appends($request->input());
                 return view(
                     "site-pages::site.folders.show",
                     compact("folder", "folders", "pages", "request", "siteBreadcrumb", "pageMetas")
