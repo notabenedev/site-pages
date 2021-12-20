@@ -168,8 +168,8 @@ class PageController extends Controller
     {
         $id = $page->id;
         Validator::make($data, [
-            "title" => ["required", "max:100", "unique:products,title"],
-            "slug" => ["nullable", "max:150", "unique:products,slug"],
+            "title" => ["required", "max:100", "unique:pages,title,{$id}"],
+            "slug" => ["nullable", "max:150", "unique:pages,slug,{$id}"],
             "image" => ["nullable", "image"],
             "short" => ["nullable", "max:500"],
             "description" => ["required"],

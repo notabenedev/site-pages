@@ -107,7 +107,7 @@
         </div>
         @isset($page->comment)
             <div class="page-show__comment">
-                {{ $page->comment }}
+                {!! nl2br($page->comment) !!}
             </div>
         @endisset
 

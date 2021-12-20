@@ -83,7 +83,7 @@
                     @if ($page->comment)
                         <dt class="col-sm-3">{{ config("site-pages.sitePageCommentName") }}:</dt>
                         <dd class="col-sm-9">
-                            <div>{!! $page->comment !!}</div>
+                            <div>{!! nl2br($page->comment) !!}</div>
                         </dd>
                     @endif
 
