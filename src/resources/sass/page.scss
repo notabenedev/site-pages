@@ -21,6 +21,40 @@
     }
   }
 
+  &-teaser{
+    &__title {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    &__short{
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+
+    &__accent{
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    &__btn{
+      font-size: 1.125rem;
+      font-weight: 400;
+    }
+
+    &__lnk{
+      font-size: 1.125rem;
+      font-weight: 400;
+      text-decoration: underline;
+      &:hover{
+        text-decoration: none;
+      }
+
+    }
+  }
+
   &-show{
     @mixin top-gallery-sizes($both: true) {
       width: 100%;

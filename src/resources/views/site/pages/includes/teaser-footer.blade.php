@@ -15,6 +15,7 @@
 
     <div class="btn ml-auto">
         <a href="#"
+           class="page-teaser__lnk"
            data-toggle="modal"
            data-target="#getPageQuestionModal"
            data-whatever="{{ $page->folder->title .": ". $page->title }}">
