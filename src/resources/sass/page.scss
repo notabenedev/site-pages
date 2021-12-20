@@ -53,6 +53,9 @@
       }
 
     }
+    &__image{
+      border-radius: $border-radius;
+    }
   }
 
   &-show{

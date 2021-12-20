@@ -1,6 +1,6 @@
 <div class="card page-teaser h-100">
     <div class="page-teaser__image-cover">
-        <a class="page-teaser__image"
+        <a class="page-teaser__image-lnk"
            @if (config("site-pages.showPageModal"))
            data-toggle="modal"
            data-target="#showPage{{ $page->slug }}Modal"
@@ -15,7 +15,7 @@
                     "image" => $page->image,
                     "template" => "pages-grid-sm-12",
                     "grid" => $grid,
-                    "imgClass" => "card-img-top",
+                    "imgClass" => "card-img-top page-teaser__image",
                 ])
             @else
                 <div class="page-teaser__image-empty">
