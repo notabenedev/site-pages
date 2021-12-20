@@ -69,6 +69,7 @@ class PagesServiceProvider extends ServiceProvider
                     break;
 
             };
+            $view->with("perRow", $colLg);
             $view->with("col", $col);
             $view->with("grid", $grid);
         });

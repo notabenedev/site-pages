@@ -43,7 +43,7 @@
                            name="title"
                            value="{{ $title }}"
                            required
-                           disabled
+                           readonly
                            class="form-control">
                     <input type="hidden"
                            id="folder{{ isset($modal) ? "-modal" : "-full" }}"
