@@ -32,7 +32,7 @@
         @endforeach
     </div>
 
-    @if ($gallery->count() >= 2)
+    @if (($page->image && $gallery->count() >= 1) || $gallery->count() >= 2)
         <div class="page-gallery-thumbs">
             @isset($page->image)
                 <div class="carousel-cell">
