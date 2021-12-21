@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade showPageModal" id="getPageQuestionModal" tabindex="-1" aria-labelledby="getPageQuestionModalLabel" aria-hidden="true">
+<div class="modal fade getPageQuestionModal" id="getPageQuestionModal" tabindex="-1" aria-labelledby="getPageQuestionModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
