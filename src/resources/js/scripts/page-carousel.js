@@ -4,14 +4,12 @@ import "flickity/css/flickity.css";
 (function ($) {
     $(document).ready(function(){
         setTimeout(initPageCarousel, 1000);
-       // modalCarousel('.showPageModal');
-
+        modalCarousel('.showPageModal');
     });
     function modalCarousel($class) {
         $($class).each(function () {
             $(this).on( 'shown.bs.modal', function( event ) {
-                var gallery = $(this).find('.page-gallery-top');
-                $(gallery).flickity('resize');
+                initPageCarousel();
             });
         });
     }
