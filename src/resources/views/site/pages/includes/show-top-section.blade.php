@@ -1,11 +1,11 @@
 <div class="col-12 col-lg-6">
-    <div class="page-gallery-top">
+    <div class="page-gallery-top" id="pageGalleryTop{{ $page->id }}">
         @isset($page->image)
             <div class="carousel-cell">
                 @img([
                 "image" => $page->image,
                 "template" => "pages-grid-sm-12",
-                "lightbox" => "lightGroupPage",
+                "lightbox" => "lightGroupPage".$page->id,
                 "grid" => [
                 "pages-grid-xl-6" => 1200,
                 "pages-grid-lg-6" => 992,
@@ -20,7 +20,7 @@
                 @img([
                     "image" => $item,
                     "template" => "pages-grid-sm-12",
-                    "lightbox" => "lightGroupPage",
+                    "lightbox" => "lightGroupPage".$page->id,
                     "grid" => [
                         "pages-grid-xl-6" => 1200,
                         "pages-grid-lg-6" => 992,
@@ -33,7 +33,7 @@
     </div>
 
     @if (($page->image && $gallery->count() >= 1) || $gallery->count() >= 2)
-        <div class="page-gallery-thumbs">
+        <div class="page-gallery-thumbs" id="pageGalleryThumbs{{ $page->id }}">
             @isset($page->image)
                 <div class="carousel-cell">
                     @pic([

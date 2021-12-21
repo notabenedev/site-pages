@@ -30,13 +30,16 @@ import "flickity/css/flickity.css";
 
         $(".page-gallery-thumbs").each(function () {
             let thumb = this;
+            let thumbId = thumb.id;
+            let id = thumbId.replace("pageGalleryThumbs","");
+            let topId = "#pageGalleryTop"+id;
             let galleryThumbs = new PageFlickity(thumb, {
                 prevNextButtons: false,
                 pageDots: false,
-                asNavFor: ".page-gallery-top",
+                asNavFor: topId,
                  freeScroll: true,
                 contain: true,
-               // imagesLoaded: true,
+                //imagesLoaded: true,
                 //percentPosition: false,
             });
 
