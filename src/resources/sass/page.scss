@@ -1,3 +1,34 @@
+@mixin top-gallery-sizes($both: true) {
+  width: 100%;
+  @if $both {
+    height: auto;//280px;
+  }
+  @include media-breakpoint-up(sm) {
+    width: 465px;
+    @if $both {
+      height: 310px;
+    }
+  }
+  @include media-breakpoint-up(md) {
+    width: 625px;
+    @if $both {
+      height: 416px;
+    }
+  }
+  @include media-breakpoint-up(lg) {
+    width: 385px;
+    @if $both {
+      height: 256px;
+    }
+  }
+  @include media-breakpoint-up(xl) {
+    width: 524px;
+    @if $both {
+      height: 349px;
+    }
+  }
+}
+
 .pages-grid-col{
   margin: 1rem 0;
 }
@@ -59,36 +90,7 @@
   }
 
   &-show{
-    @mixin top-gallery-sizes($both: true) {
-      width: 100%;
-      //@if $both {
-      //  height: 100%;
-      //}
-      @include media-breakpoint-up(sm) {
-        width: 465px;
-        @if $both {
-          height: 310px;
-        }
-      }
-      @include media-breakpoint-up(md) {
-        width: 625px;
-        @if $both {
-          height: 416px;
-        }
-      }
-      @include media-breakpoint-up(lg) {
-        width: 385px;
-        @if $both {
-          height: 256px;
-        }
-      }
-      @include media-breakpoint-up(xl) {
-        width: 524px;
-        @if $both {
-          height: 349px;
-        }
-      }
-    }
+
 
     &__cover {
         background-color: $white;
@@ -159,28 +161,30 @@
           }
         }
       }
-        &-thumbs {
-          overflow: hidden;
-          margin: 0.5*$grid-gutter-width auto;
-          @include top-gallery-sizes(false);
-          height: 65px;
-          display: none;
-          &.flickity-enabled {
+      &-thumbs {
+        overflow: hidden;
+        margin: 0.5*$grid-gutter-width auto;
+        @include top-gallery-sizes(false);
+        height: 65px;
+        display: none;
+        &.flickity-enabled {
             display: block;
-          }
-          .carousel-cell {
-            margin-right: 0.5*$grid-gutter-width;
-            width: 97px;
-            height: 65px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        }
+        .carousel-cell {
+          margin-right: 0.5*$grid-gutter-width;
+          width: 97px;
+          height: 65px;
+          display: flex;
 
-            &.is-nav-selected{
+          align-items: center;
+          justify-content: center;
+
+          &.is-nav-selected{
               //background-color: $light;
-            }
           }
+
         }
       }
+    }
   }
 }

@@ -1,50 +1,34 @@
-import PageFlickity from "flickity-as-nav-for";
+import Flickity from "flickity";
+import jQueryBridget from "jquery-bridget";
+import "flickity-as-nav-for";
 import "flickity/css/flickity.css";
 
+window.flickity = require('flickity');
+
 (function ($) {
+
+    // make Flickity a jQuery plugin
+    Flickity.setJQuery( $ );
+    jQueryBridget( 'flickity', Flickity, $ );
+
     $(document).ready(function(){
-        setTimeout(initPageCarousel, 1000);
-        modalCarousel('.showPageModal');
+        modalCarousel();
     });
-    function modalCarousel($class) {
-        $($class).each(function () {
+
+    function modalCarousel() {
+        $('.showPageModal').each(function () {
             $(this).on( 'shown.bs.modal', function( event ) {
-                initPageCarousel();
+                let pageId = this.id;
+                let id = pageId.replace("showPage","");
+                id = id.replace("Modal","");
+                let topId = "#pageGalleryTop"+id;
+                let thumbsId = "#pageGalleryThumbs"+id;
+                $(topId).flickity("resize");
+                $(thumbsId).flickity("resize");
+                //$(window).trigger('resize');
             });
         });
     }
-    function initPageCarousel() {
-        $(".page-gallery-top").each(function () {
-            let top = this;
-            let galleryTop = new PageFlickity(top, {
-                prevNextButtons: false,
-                pageDots: false,
-                wrapAround: true,
-                cellSelector: '.carousel-cell',
-                draggable: false,
-                //imagesLoaded: true,
-                //percentPosition: false
-            });
-        });
 
 
-        $(".page-gallery-thumbs").each(function () {
-            let thumb = this;
-            let thumbId = thumb.id;
-            let id = thumbId.replace("pageGalleryThumbs","");
-            let topId = "#pageGalleryTop"+id;
-            let galleryThumbs = new PageFlickity(thumb, {
-                prevNextButtons: false,
-                pageDots: false,
-                asNavFor: topId,
-                 freeScroll: true,
-                contain: true,
-                //imagesLoaded: true,
-                //percentPosition: false,
-            });
-
-        });
-
-
-    }
 })(jQuery);

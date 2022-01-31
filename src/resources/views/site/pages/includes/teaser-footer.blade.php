@@ -13,7 +13,7 @@
         </a>
     </div>
 
-    <div class="my-auto ml-auto">
+    <div class="my-auto ml-auto text-right">
         <a href="#"
            class="page-teaser__lnk"
            data-toggle="modal"

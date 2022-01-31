@@ -1,5 +1,19 @@
 <div class="col-12 col-lg-6">
-    <div class="page-gallery-top" id="pageGalleryTop{{ $page->id }}">
+    <div class="page-gallery-top  js-flickity" id="pageGalleryTop{{ $page->slug }}"
+         data-flickity-options='{
+         "prevNextButtons": false,
+         "pageDots": false,
+         "imagesLoaded": true,
+         "percentPosition": false,
+          "adaptiveHeight": true,
+          "resize": true,
+           "setGallerySize": true
+{{--         "wrapAround": true,--}}
+{{--         "draggable": false,--}}
+{{--         "resize": true,--}}
+{{--         "setGallerySize": false,--}}
+{{--         "percentPosition": false--}}
+         } '>
         @isset($page->image)
             <div class="carousel-cell">
                 @img([
@@ -33,7 +47,14 @@
     </div>
 
     @if (($page->image && $gallery->count() >= 1) || $gallery->count() >= 2)
-        <div class="page-gallery-thumbs" id="pageGalleryThumbs{{ $page->id }}">
+        <div class="page-gallery-thumbs  js-flickity" id="pageGalleryThumbs{{ $page->slug }}"
+             data-flickity-options='{
+             "prevNextButtons": false,
+             "pageDots": false,
+             "asNavFor": "#pageGalleryTop{{ $page->slug }}",
+             "freeScroll": true,
+             "contain": true
+             }'>
             @isset($page->image)
                 <div class="carousel-cell">
                     @pic([
