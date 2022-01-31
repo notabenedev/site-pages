@@ -53,7 +53,10 @@
              "pageDots": false,
              "asNavFor": "#pageGalleryTop{{ $page->slug }}",
              "freeScroll": true,
-             "contain": true
+             "contain": true,
+             "resize": true
+{{--             "cellAlign": "left",--}}
+{{--              "percentPosition": false--}}
              }'>
             @isset($page->image)
                 <div class="carousel-cell">

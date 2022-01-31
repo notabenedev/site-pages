@@ -17,6 +17,11 @@ Install
                         {--scss: Export scss}
 - npm install flickity
 - npm install flickity-as-nav-for
+
+## v1.1.0 
+fix xs-view modal carousel:
+- npm install jquery-bridget
+- php artisan vendor:publish --provider="Notabenedev\SitePages\PagesServiceProvider" --tag=public --force
     
 ##Формы:
     page-order-form: name*, phone*, (date*), (title*, folder*), message
@@ -70,4 +75,5 @@ Install
 - sitePageShowBtnName - название кнопки
 - sitePageShowFormInputDate - заголовок поля формы
 - sitePageShowFormInputTitle" - заголовок поля формы
+    
     
