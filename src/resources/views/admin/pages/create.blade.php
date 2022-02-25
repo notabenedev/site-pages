@@ -109,7 +109,7 @@
 
                     <div class="form-group">
                         <label for="comment">{{ config("site-pages.sitePageCommentName") }}</label>
-                        <textarea class="form-control  @error("comment") is-invalid @enderror"
+                        <textarea class="form-control tiny  @error("comment") is-invalid @enderror"
                                   name="comment"
                                   id="comment"
                                   maxlength="500"

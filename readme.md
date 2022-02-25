@@ -76,4 +76,15 @@ fix xs-view modal carousel:
 - sitePageShowFormInputDate - заголовок поля формы
 - sitePageShowFormInputTitle" - заголовок поля формы
     
-    
+   
+## Обновление
+
+- pages.comment - вывод в html
+
+Изменен тип поля БД pages.comment на text.
+В админ панели добавлен tiny-редактор к полю комментария.
+В шаблоне выводится поле comment как html.
+
+Обновление:
+php artisan migrate.
+Если изменен шаблон вывода Page на сайте - обновить на вывод поля comment в фомате html.
