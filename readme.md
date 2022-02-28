@@ -17,11 +17,23 @@ Install
                         {--scss: Export scss}
 - npm install flickity
 - npm install flickity-as-nav-for
+- npm install jquery-bridget
 
 ## v1.1.0 
 fix xs-view modal carousel:
 - npm install jquery-bridget
 - php artisan vendor:publish --provider="Notabenedev\SitePages\PagesServiceProvider" --tag=public --force
+
+## v1.1.2
+pages.comment - вывод в html:
+
+Изменен тип поля БД pages.comment на text.
+В админ панели добавлен tiny-редактор к полю комментария.
+В шаблоне выводится поле comment как html.
+
+Обновление:
+- php artisan migrate.
+- Если изменен шаблон вывода Page на сайте - обновить на вывод поля comment в фомате html.
     
 ##Формы:
     page-order-form: name*, phone*, (date*), (title*, folder*), message
@@ -77,14 +89,3 @@ fix xs-view modal carousel:
 - sitePageShowFormInputTitle" - заголовок поля формы
     
    
-## Обновление
-
-- pages.comment - вывод в html
-
-Изменен тип поля БД pages.comment на text.
-В админ панели добавлен tiny-редактор к полю комментария.
-В шаблоне выводится поле comment как html.
-
-Обновление:
-php artisan migrate.
-Если изменен шаблон вывода Page на сайте - обновить на вывод поля comment в фомате html.

@@ -98,7 +98,7 @@ class PageController extends Controller
             "short" => ["nullable", "max:500"],
             "description" => ["required"],
             "accent" => ["nullable", "max:100"],
-            "comment" => ["nullable", "max:500"],
+            "comment" => ["nullable"],
         ], [], [
             "title" => "Заголовок",
             "slug" => "Адресная строка",
@@ -174,7 +174,7 @@ class PageController extends Controller
             "short" => ["nullable", "max:500"],
             "description" => ["required"],
             "accent" => ["nullable", "max:100"],
-            "comment" => ["nullable", "max:500"],
+            "comment" => ["nullable"],
         ], [], [
             "title" => "Заголовок",
             "slug" => "Адресная строка",
