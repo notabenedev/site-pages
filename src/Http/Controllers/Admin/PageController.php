@@ -97,7 +97,7 @@ class PageController extends Controller
             "image" => ["nullable", "image"],
             "short" => ["nullable", "max:500"],
             "description" => ["required"],
-            "accent" => ["nullable", "max:100"],
+            "accent" => ["nullable", "max:200"],
             "comment" => ["nullable"],
         ], [], [
             "title" => "Заголовок",
@@ -173,7 +173,7 @@ class PageController extends Controller
             "image" => ["nullable", "image"],
             "short" => ["nullable", "max:500"],
             "description" => ["required"],
-            "accent" => ["nullable", "max:100"],
+            "accent" => ["nullable", "max:200"],
             "comment" => ["nullable"],
         ], [], [
             "title" => "Заголовок",

@@ -95,7 +95,7 @@
                         <label for="accent">{{ config("site-pages.sitePageAccentName") }}</label>
                         <input type="text"
                                id="accent"
-                               maxlength="100"
+                               maxlength="200"
                                name="accent"
                                value="{{ old('accent') }}"
                                class="form-control @error("accent") is-invalid @enderror">
