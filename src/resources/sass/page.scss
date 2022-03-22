@@ -53,6 +53,12 @@
   }
 
   &-teaser{
+
+    box-shadow: none;
+    &:hover{
+      box-shadow: $box-shadow;
+    }
+
     &__title {
       font-size: 1.5rem;
       font-weight: 500;
@@ -83,9 +89,6 @@
         text-decoration: none;
       }
 
-    }
-    &__image{
-      border-radius: $border-radius;
     }
   }
 
