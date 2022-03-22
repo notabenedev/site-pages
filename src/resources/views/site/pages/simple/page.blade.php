@@ -27,7 +27,7 @@
 
     <div class="col-12 mt-5">
         @if(config("site-pages.siteSimplePageGalleryHeader", false))
-            <h2 class="h1 page-simple__header">{{ config("site-pages.siteSimplePageGalleryHeader") }}</h2>
+            <h2 class="h2 page-simple__header">{{ config("site-pages.siteSimplePageGalleryHeader") }}</h2>
         @endif
     </div>
 
