@@ -28,6 +28,10 @@ return [
     "folderPagesPerPage" => 18,
 
     "showPageModal" => false,
+    "siteSimplePage" => false,
+    "siteSimplePageSimpleTeaser" => false,
+    "siteSimplePageGalleryName" => false,
+    "siteSimplePageFormHeader" => "Ответим на вопросы",
     "sitePageAccentName" => "Цена",
     "sitePageCommentName" => "Дополнительная информация",
     "sitePageShowBtnName" => false,

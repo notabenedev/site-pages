@@ -1,4 +1,4 @@
-<form class="sending-form-custom position-relative" name="page-order-form">
+<form class="sending-form-custom position-relative" name="page-order-form" id="pageOrderForm{{ isset($modal) ? "Modal" : "Full" }}">
     @hiddenCaptcha
     <div class="form-row">
         <div class="col-12">

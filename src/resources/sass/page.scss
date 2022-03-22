@@ -187,4 +187,33 @@
       }
     }
   }
+
+  &-simple{
+    font-size: 1.125rem;
+    line-height: 1.55;
+    @include media-breakpoint-down(md){
+      font-size: 1rem;
+    }
+
+    &__header{
+      margin-bottom: 1.875rem;
+    }
+
+
+    &__accent{
+      font-size: 1.375rem;
+      font-weight: 600;
+      line-height: 1.27;
+      margin: 1.5625rem 0;
+      padding: 0.75rem 0.9375rem;
+      background-color: $info;
+    }
+
+    &__form{
+      padding: 1.25rem;
+      border-radius: $border-radius;
+      border: 1px solid $grid-line;
+      font-size: 1rem;
+    }
+  }
 }

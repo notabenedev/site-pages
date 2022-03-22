@@ -1,4 +1,4 @@
-<form class="sending-form-custom position-relative" name="page-question-form">
+<form class="sending-form-custom position-relative" name="page-question-form" id="pageQuestionForm{{ isset($modal) ? "Modal" : "Full"  }}">
     @hiddenCaptcha
     <div class="form-row">
         <div class="col-12">
@@ -27,6 +27,9 @@
                     <input type="hidden"
                            id="title{{ isset($modal) ? "-modal" : "-full" }}"
                            name="title"
+                           @isset($title)
+                               value="{{ $title }}"
+                           @endisset
                            required
                            class="form-control">
             </div>

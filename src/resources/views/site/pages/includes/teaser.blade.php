@@ -41,14 +41,18 @@
             @if ($page->short)
                 <div class="page-teaser__short">{{ $page->short }}</div>
             @endif
-            @if ($page->accent)
-                <div class="page-teaser__accent">{{ $page->accent }}</div>
+            @if(! config("site-pages.siteSimplePageSimpleTeaser", false))
+                @if ($page->accent)
+                    <div class="page-teaser__accent">{{ $page->accent }}</div>
+                @endif
             @endif
         </div>
     </div>
-    <div class="card-footer page-teaser__footer">
-        @include("site-pages::site.pages.includes.teaser-footer")
-    </div>
+    @if(! config("site-pages.siteSimplePageSimpleTeaser", false))
+        <div class="card-footer page-teaser__footer">
+            @include("site-pages::site.pages.includes.teaser-footer")
+        </div>
+        @endif
 </div>
 @if (config("site-pages.showPageModal"))
     @include("site-pages::site.pages.includes.show-modal", [
