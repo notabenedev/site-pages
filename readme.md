@@ -19,14 +19,19 @@ Install
 - npm install flickity-as-nav-for
 - npm install jquery-bridget
 
-##v1.2.0
+## v1.2.1 - v1.2.3
+Change css
+- php artisan vendor:publish --provider="Notabenedev\SitePages\PagesServiceProvider" --tag=public --force
+- npm run
+
+## v1.2.0
 add simple page, simple teaser (не для модальных страниц) 
 
-New config:
-    "siteSimplePage" => false,
-    "siteSimplePageSimpleTeaser" => false,
-    "siteSimplePageGalleryHeader" => "Наши работы",
-    "siteSimplePageFormHeader" => "Ответим на вопросы",
+New config parameters:
+- "siteSimplePage" => false,
+- "siteSimplePageSimpleTeaser" => false,
+- "siteSimplePageGalleryHeader" => "Наши работы",
+- "siteSimplePageFormHeader" => "Ответим на вопросы",
     
 Update:
 - php artisan vendor:publish --provider="Notabenedev\SitePages\PagesServiceProvider" --tag=public --force

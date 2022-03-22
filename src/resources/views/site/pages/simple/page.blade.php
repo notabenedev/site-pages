@@ -1,6 +1,6 @@
 <div class="row">
-    <div class="col-12 col-md-6 col-lg-8 page-simple__header">
-        <h1 class="h1">{{ $page->title }}</h1>
+    <div class="col-12 col-md-6 col-lg-8 ">
+        <h1 class="h1 page-simple__header">{{ $page->title }}</h1>
     </div>
     <div class="col-12 col-lg-8">
         <div class="description page-simple__description">
