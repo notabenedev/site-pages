@@ -11,6 +11,6 @@ class PagesGridSm12 implements FilterInterface {
     public function applyFilter(File $image)
     {
         return $image
-            ->fit(510, 340);
+            ->fit(543, 362);
     }
 }
