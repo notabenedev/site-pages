@@ -10,6 +10,7 @@ Install
                         {--menu : Config menu}
                         {--models : Export models}
                         {--controllers : Export controllers}
+                        {--observers : Export observers}
                         {--policies : Export and create rules}
                         {--only-default : Create default rules}
                         {--vue : Export vue components}
@@ -18,6 +19,13 @@ Install
 - npm install flickity
 - npm install flickity-as-nav-for
 - npm install jquery-bridget
+
+## v1.2.7
+Make command: add observers
+- php artisan make:pages --observers
+
+## v1.2.4-1.2.6
+Change simple blade, image filters
 
 ## v1.2.1 - v1.2.3
 Change css

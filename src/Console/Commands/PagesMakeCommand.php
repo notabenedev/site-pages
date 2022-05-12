@@ -19,6 +19,7 @@ class PagesMakeCommand extends BaseConfigModelCommand
     {--menu : Config menu}
     {--models : Export models}
     {--controllers : Export controllers}
+    {--observers : Export observers}
     {--policies : Export and create rules} 
     {--vue : Export vue}
     {--scss : Export scss}
@@ -45,6 +46,13 @@ class PagesMakeCommand extends BaseConfigModelCommand
      * @var array
      */
     protected $models = ["Folder","Page"];
+
+    /**
+     * Создание наблюдателей
+     *
+     * @var array
+     */
+    protected $observers = ["FolderObserver", "PageObserver"];
 
     /**
      * Make Controllers
@@ -142,6 +150,10 @@ class PagesMakeCommand extends BaseConfigModelCommand
 
         if ($this->option("models") || $all) {
             $this->exportModels();
+        }
+
+        if ($this->option("observers") || $all) {
+            $this->exportObservers();
         }
 
         if ($this->option("controllers") || $all) {
