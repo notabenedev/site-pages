@@ -235,10 +235,16 @@ class FolderController extends Controller
     {
         $this->authorize("update", $folder);
 
-        $folder->publishCascade();
-
-        return redirect()
-            ->back();
+        if ($folder->publishCascade())
+            return
+                redirect()
+                    ->back()
+                    ->with("success", "Успешно изменено");
+        else
+            return
+                redirect()
+                    ->back()
+                    ->with("danger",  "Статус не может быть изменен");
     }
     /**
      * Изменить приоритет

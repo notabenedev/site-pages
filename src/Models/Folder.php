@@ -73,54 +73,57 @@ class Folder extends Model
      * Change publish status all children and pages
      *
      */
-
     public function publishCascade()
     {
-
         $published =  $this->published_at;
         $children = $this->children();
         $collection = $children->get();
         $parentPublished = $this->isParentPublished();
 
-        //folder pages
-        $pages = $this->pages()->get();
-        foreach ($pages as $page) {
-            if ($published || !$parentPublished)
-                $page->publish();
-        }
+        //published folder and child
 
-        // child folders
-        if ($collection->count() > 0) {
-
-            //unpublished folder and child folders
-            if ($published || !$parentPublished) {
-                $this->published_at = null;
-                $this->save();
-
-                foreach ($collection as $child) {
-                    $this->publish($child);
-                }
-
-            } else {
-                //publish folder
-                $this->publish();
-            }
-            return
-                redirect()
-                    ->back();
-
-        }
-        // leaf folders
-        else {
-            //can't publish the leaf when parent is unpublished
-            if (!$published  && !$parentPublished) {
-                return redirect()
-                    ->back();
-            }
+        if ($parentPublished){
+            // change publish
             $this->publish();
+            if($published){
+                $this->unPublishChildren($collection);
+                $this->unPublishChildren($this->pages()->get(), false);
+            }
+            return true;
+        }
+        else
+        {
+            if (!$published){
+                return false;
+            }
+            else {
+                $this->publish();
+                $this->unPublishChildren($collection);
+                $this->unPublishChildren($this->pages()->get(), false);
+                return true;
+            }
+        }
 
-            return redirect()
-                ->back();
+    }
+
+
+    /**
+     * UnPublish child
+     *
+     * @param $collection
+     * @return void
+     *
+     */
+    protected function unPublishChildren($collection, $cascade = true){
+        if ($collection->count() > 0) {
+            foreach ($collection as $child) {
+                $child->published_at = null;
+                $child->save();
+                if ($cascade) {
+                    $this->unPublishChildren($child->children()->get());
+                    $this->unPublishChildren($child->pages, false);
+                }
+            }
         }
     }
 

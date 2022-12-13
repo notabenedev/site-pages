@@ -31,6 +31,7 @@ return [
     "siteSimplePage" => false,
     "siteSimplePageSimpleTeaser" => false,
     "siteSimplePageGalleryName" => false,
+    "siteSimplePageGalleryHeader" => false,
     "siteSimplePageFormHeader" => "Ответим на вопросы",
     "sitePageAccentName" => "Цена",
     "sitePageCommentName" => "Дополнительная информация",
