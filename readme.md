@@ -20,6 +20,13 @@ Install
 - npm install flickity-as-nav-for
 - npm install jquery-bridget
 
+## v2.0.1
+Support site-blocks package to pages
+
+## v1.2.8
+- Config: use siteSimpleGalleryHeader
+- Fix PulishCascade to Admin/FolderController
+
 ## v1.2.7
 Make command: add observers
 - php artisan make:pages --observers
