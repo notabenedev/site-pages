@@ -52,6 +52,8 @@
                                 Галерея
                             </a>
                         </li>
+
+                        @includeIf("site-blocks::admin.block-groups.includes.pill",["model" => 'pages', "modelId"=> $page->id, "currentRoute" => $currentRoute ])
                     @endcan
 
 

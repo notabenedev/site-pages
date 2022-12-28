@@ -19,6 +19,14 @@
             </div>
         @endisset
 
+        @if( ! empty($page->blockGroups()) ? $groups = $page->blockGroups()->orderBy("priority")->get() : false)
+            <div class="page-simple__groups">
+                @foreach($groups as $group)
+                    @includeIf($group->template, ["group" => $group, "blocks" => $group->blocks])
+                @endforeach
+            </div>
+        @endif
+
     </div>
 
     <div class="col-12 col-lg-4 order-last order-lg-0">

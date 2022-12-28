@@ -95,6 +95,14 @@
   &-show{
 
 
+    &__groups{
+      margin-top: $grid-gutter-width;
+    }
+
+    &__text-cover{
+      margin-top: $grid-gutter-width;
+    }
+
     &__cover {
         background-color: $white;
         padding-top: $grid-gutter-width;
@@ -192,7 +200,8 @@
   }
 
   &-simple{
-    margin: 0;
+    margin-top: 0;
+    margin-bottom: 0;
     font-size: 1.125rem;
     line-height: 1.55;
     @include media-breakpoint-down(md){
@@ -218,6 +227,10 @@
       border-radius: $border-radius;
       border: 1px solid $grid-line;
       font-size: 1rem;
+    }
+
+    &__groups{
+      margin-top: $grid-gutter-width;
     }
   }
 }
