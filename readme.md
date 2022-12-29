@@ -1,11 +1,10 @@
-#Pages
-Install
+## Конфиг
+    php artisan vendor:publish --provider="Notabenedev\SitePages\PagesServiceProvider" --tag=config
 
-- Заполнить конфиг необходимыми данными
-- php artisan migrate
-- php artisan vendor:publish --provider="Notabenedev\SitePages\PagesServiceProvider" --tag=public --force
-- php artisan vendor:publish --provider="Notabenedev\SitePages\PagesServiceProvider" --tag=config
-- php artisan make:pages
+## Install
+    php artisan migrate
+    php artisan vendor:publish --provider="Notabenedev\SitePages\PagesServiceProvider" --tag=public --force
+    php artisan make:pages
                         {--all : Run all}
                         {--menu : Config menu}
                         {--models : Export models}
@@ -16,12 +15,14 @@ Install
                         {--vue : Export vue components}
                         {--js : Export scripts}
                         {--scss: Export scss}
-- npm install flickity
-- npm install flickity-as-nav-for
-- npm install jquery-bridget
+    npm install flickity  
+    npm install flickity-as-nav-for
+    npm install jquery-bridget
+    npm run dev
 
 ## v2.0.1
-Support site-blocks package to pages
+Support site-blocks package to pages 
+- php artisan vendor:publish --provider="Notabenedev\SitePages\PagesServiceProvider" --tag=public --force
 
 ## v1.2.8
 - Config: use siteSimpleGalleryHeader
@@ -33,6 +34,8 @@ Make command: add observers
 
 ## v1.2.4-1.2.6
 Change simple blade, image filters
+- php artisan config:clear
+- php artisan cache:clear
 
 ## v1.2.1 - v1.2.3
 Change css
