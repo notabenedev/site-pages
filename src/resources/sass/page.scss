@@ -1,7 +1,7 @@
 @mixin top-gallery-sizes($both: true) {
-  width: 100%;
+  width: calc(100vw - 50px);
   @if $both {
-    height: auto;//280px;
+    height: calc(calc(100vw - 50px)/3*2);
   }
   @include media-breakpoint-up(sm) {
     width: 465px;

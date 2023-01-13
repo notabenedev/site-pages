@@ -15,10 +15,24 @@
                         {--vue : Export vue components}
                         {--js : Export scripts}
                         {--scss: Export scss}
-    npm install flickity  
-    npm install flickity-as-nav-for
-    npm install jquery-bridget
+    
+    if IE 11 support:
+                npm install flickity@2.2.2  
+                npm install flickity-as-nav-for@2.0.1
+    not support IE:
+                npm install flickity 
+                npm install flickity-as-nav-for
     npm run dev
+
+## v3.0.1
+Support IE 11:
+- npm uninstall jquery-bridget
+- npm uninstall flickity
+- npm uninstall flickity-as-nav-for
+- npm install flickity@2.2.2
+- npm install flickity-as-nav-for@2.0.1
+- php artisan vendor:publish --provider="Notabenedev\SitePages\PagesServiceProvider" --tag=public --force
+- npm run 
 
 ## v2.0.1
 Support site-blocks package to pages 
