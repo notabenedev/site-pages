@@ -24,6 +24,8 @@
                 npm install flickity-as-nav-for
     npm run dev
 
+## v3.0.3
+- php artisan vendor:publish --provider="Notabenedev\SitePages\PagesServiceProvider" --tag=public --force
 ## v3.0.1
 Support IE 11:
 - npm uninstall jquery-bridget
