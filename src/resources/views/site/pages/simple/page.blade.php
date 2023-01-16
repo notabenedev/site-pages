@@ -19,7 +19,7 @@
             </div>
         @endisset
 
-        @if( ! empty($page->blockGroups()) ? $groups = $page->blockGroups()->orderBy("priority")->get() : false)
+        @if( ! empty($page->blockGroups) ? $groups = $page->blockGroups()->orderBy("priority")->get() : false)
             <div class="page-simple__groups">
                 @foreach($groups as $group)
                     @includeIf($group->template, ["group" => $group, "blocks" => $group->blocks])
