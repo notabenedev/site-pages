@@ -21,16 +21,19 @@ class FolderController extends Controller
             ->orderBy("priority")
             ->get();
         $siteBreadcrumb = [
-            (object) [
-                'active' => true,
-                'url' => route("site.folders.index"),
-                'title' => config("site-pages.sitePackageName"),
-            ]
-        ];
+                (object) [
+                    'active' => true,
+                    'url' => route("site.folders.index"),
+                    'title' => config("site-pages.sitePackageName"),
+                ]
+            ];
+
         $pageMetas = Meta::getByPageKey("folders");
         return view(
             "site-pages::site.folders.index",
-            compact("folders", "siteBreadcrumb", "pageMetas")
+            config("site-pages.siteBreadcrumbs", false)?
+                compact("folders", "siteBreadcrumb", "pageMetas") :
+                compact("folders", "pageMetas")
         );
     }
 
@@ -70,7 +73,9 @@ class FolderController extends Controller
                     ->paginate(config("site-pages.folderPagesPerPage"))->appends($request->input());
                 return view(
                     "site-pages::site.folders.show",
-                    compact("folder", "folders", "pages", "request", "siteBreadcrumb", "pageMetas")
+                    config("site-pages.siteBreadcrumbs", false)?
+                        compact("folder", "folders", "pages", "request", "siteBreadcrumb", "pageMetas"):
+                        compact("folder", "folders", "pages", "request", "pageMetas")
                 );
             }
         }

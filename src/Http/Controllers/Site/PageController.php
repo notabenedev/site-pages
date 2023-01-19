@@ -28,7 +28,9 @@ class PageController extends Controller
 
             return view(
                 "site-pages::site.pages.show",
-                compact("page", "siteBreadcrumb", "gallery", "pageMetas", "folder")
+                config("site-pages.siteBreadcrumbs", false)?
+                    compact("page", "siteBreadcrumb", "gallery", "pageMetas", "folder"):
+                    compact("page", "gallery", "pageMetas", "folder")
             );
         }
         else

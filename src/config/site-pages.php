@@ -4,6 +4,7 @@ return [
     "sitePackageName" => "Категории страниц",
     "siteFoldersName" => "Структура",
     "sitePagesName" => "Страницы",
+    "siteBreadcrumbs" => true,
 
     "folderFacade" => \Notabenedev\SitePages\Helpers\FolderActionsManager::class,
     "pageFacade" => \Notabenedev\SitePages\Helpers\PageActionsManager::class,
