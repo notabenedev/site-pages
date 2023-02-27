@@ -23,7 +23,13 @@
                 npm install flickity 
                 npm install flickity-as-nav-for
     npm run dev
-
+## v3.0.6
+alter table folders.short: tinyText => text
+- php artisan migrate
+## v3.0.5
+config: add "siteBreadcrumbs" => true | false, fix config merge
+## v3.0.4 
+fix simple view without blocks
 ## v3.0.3
 - php artisan vendor:publish --provider="Notabenedev\SitePages\PagesServiceProvider" --tag=public --force
 ## v3.0.1
