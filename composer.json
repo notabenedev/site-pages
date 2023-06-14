@@ -11,9 +11,9 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "portedcheese/base-settings": "^v3.0",
+        "portedcheese/base-settings": "^v3.0 | ^v4.0",
         "portedcheese/seo-integration": "^v1.4",
-        "portedcheese/ajax-forms": "^v1.6",
+        "portedcheese/ajax-forms": "^v1.7",
         "portedcheese/admin-site-menu": "^v1.6"
     },
     "autoload": {
