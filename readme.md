@@ -23,6 +23,12 @@
                 npm install flickity 
                 npm install flickity-as-nav-for
     npm run dev
+## v3.1.0
+Разделен вывод блоков-табов на странице (если блоки подключены)
+- внесите изменения в шаблон site-pages::site.pages.show, если он переопределен
+- внесите изменения в шаблон site-pages::site.pages.simple.page, если он переопределен
+Добавлен вывод блоков в модальное окно страницы
+- внесите изменения в шаблон site-pages::site.pages.includes.show-top-section, если он переопределен
 ## v3.0.6
 alter table folders.short: tinyText => text
 - php artisan migrate

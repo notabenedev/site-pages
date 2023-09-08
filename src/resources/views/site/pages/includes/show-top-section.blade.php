@@ -136,6 +136,19 @@
         @endisset
 
 
-
     </div>
 </div>
+@if( ! empty($page->blockGroups))
+<div class="col-12">
+   <div class="page-show__groups">
+       @if( ! empty($page->blockGroups) ? $groups = $page->blockGroupsNotInTemplates(["site-blocks::site.block-groups.templates.tab"])->get() : false)
+           @foreach($groups as $group)
+               @includeIf($group->template, ["group" => $group, "blocks" => $group->getBlocksCache()])
+           @endforeach
+       @endif
+       @if( ! empty($page->blockGroups) ? $groups = $page->blockGroupsByTemplate("site-blocks::site.block-groups.templates.tab")->get() : false)
+           @includeIf("site-blocks::site.block-groups.templates.tab-pills", ["groups" => $groups])
+       @endif
+   </div>
+</div>
+@endif
