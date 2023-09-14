@@ -96,11 +96,13 @@ class FolderController extends Controller
             "slug" => ["nullable", "max:100", "unique:folders,slug"],
             "image" => ["nullable", "image"],
             "short" => ["nullable", "max:500"],
+            "description" => ["nullable"],
         ], [], [
             "title" => "Заголовок",
             "slug" => "Адресная строка",
             "image" => "Изображение",
             "short" => "Краткое описание",
+            "description" => "Описание",
         ])->validate();
     }
 
@@ -173,11 +175,13 @@ class FolderController extends Controller
             "slug" => ["nullable", "max:100", "unique:folders,slug,{$id}"],
             "image" => ["nullable", "image"],
             "short" => ["nullable", "max:500"],
+            "description" => ["nullable"],
         ], [], [
             "title" => "Заголовок",
             "slug" => "Адресная строка",
             "image" => "Изображение",
             "short" => "Краткое описание",
+            "description" => "Описание",
         ])->validate();
     }
 

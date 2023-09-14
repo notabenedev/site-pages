@@ -26,9 +26,13 @@
             <div class="card-body">
                 <dl class="row">
                     @if ($folder->short)
-                        <dt class="col-sm-3">Описание</dt>
+                        <dt class="col-sm-3">Краткое описание</dt>
                         <dd class="col-sm-9">{{ $folder->short }}</dd>
                     @endif
+                     @if ($folder->description)
+                            <dt class="col-sm-3">Описание</dt>
+                            <dd class="col-sm-9">{!! $folder->description !!} </dd>
+                      @endif
                     @if ($folder->parent)
                         <dt class="col-sm-3">Родитель</dt>
                         <dd class="col-sm-9">

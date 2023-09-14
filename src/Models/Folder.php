@@ -18,6 +18,7 @@ class Folder extends Model
         "title",
         "slug",
         "short",
+        "description",
     ];
     protected $metaKey = "folders";
     protected $imageKey = "main_image";
