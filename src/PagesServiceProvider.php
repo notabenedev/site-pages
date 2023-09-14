@@ -8,6 +8,7 @@ use Notabenedev\SitePages\Console\Commands\PagesMakeCommand;
 use App\Folder;
 use App\Page;
 use Notabenedev\SitePages\Events\FolderChangePosition;
+use Notabenedev\SitePages\Events\PageListChange;
 use Notabenedev\SitePages\Facades\FolderActions;
 use Notabenedev\SitePages\Filters\PagesGridLg3;
 use Notabenedev\SitePages\Filters\PagesGridLg4;
@@ -22,6 +23,7 @@ use Notabenedev\SitePages\Filters\PagesGridXl4;
 use Notabenedev\SitePages\Filters\PagesGridXl6;
 use Notabenedev\SitePages\Filters\PagesShowThumb;
 use Notabenedev\SitePages\Listeners\FolderIdsInfoClearCache;
+use Notabenedev\SitePages\Listeners\FolderPagesIdsClearCache;
 use Notabenedev\SitePages\Listeners\PageGalleryChange;
 use Notabenedev\SitePages\Observers\FolderObserver;
 use Notabenedev\SitePages\Observers\PageObserver;
@@ -211,6 +213,8 @@ class PagesServiceProvider extends ServiceProvider
         $this->app["events"]->listen(ImageUpdate::class, PageGalleryChange::class);
         // Изменение позиции категории.
         $this->app["events"]->listen(FolderChangePosition::class, FolderIdsInfoClearCache::class);
+        // Изменение  категории страницы
+        $this->app["events"]->listen(PageListChange::class, FolderPagesIdsClearCache::class);
 
     }
 

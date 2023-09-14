@@ -40,8 +40,8 @@ class PageActionsManager
         //при переносле страницы в другую категорию меняется набор страниц у обоих категорий
         event(new PageListChange($page->folder));
         event(new PageListChange($original));
-        $this::forgetFolderPageIds($page->folder);
-        $this::forgetFolderPageIds($original);
+       // $this::forgetFolderPageIds($page->folder);
+       // $this::forgetFolderPageIds($original);
 
         if (! $folder->published_at && $page->published_at) {
             $page->publish();

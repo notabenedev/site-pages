@@ -23,7 +23,9 @@
                 npm install flickity 
                 npm install flickity-as-nav-for
     npm run dev
-## v3.1.0
+## v3.1.1
+Fix изменения категории для страницы (добавлен слушатель)
+- ## v3.1.0
 Разделен вывод блоков-табов на странице (если блоки подключены)
 - внесите изменения в шаблон site-pages::site.pages.show, если он переопределен
 - внесите изменения в шаблон site-pages::site.pages.simple.page, если он переопределен
