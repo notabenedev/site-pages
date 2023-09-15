@@ -78,6 +78,8 @@
 - sitePageShowFormInputDate - заголовок поля формы
 - sitePageShowFormInputTitle" - заголовок поля формы
 
+## v3.1.3
+Обновлено управление параметрами конфига: "pagesLgGrid", "foldersLgGrid"
 ## v3.1.2
 Добавлено описание к категории
 - php artisan migrate

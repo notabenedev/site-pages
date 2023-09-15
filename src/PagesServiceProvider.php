@@ -48,44 +48,22 @@ class PagesServiceProvider extends ServiceProvider
         // Подключение шаблонов.
         $this->loadViewsFrom(__DIR__ . '/resources/views', 'site-pages');
         view()->composer([
-            "site-pages::site.folders.index", "site-pages::site.pages.includes.grid"
+            "site-pages::site.folders.index"
         ], function (View $view) {
             $colLg = config("site-pages.foldersLgGrid");
-            switch ($colLg){
-                case "4":
-                    $col = "col-12 col-md-6 col-lg-4";
-                    $grid = [
-                        "pages-grid-xl-4" => 1200,
-                        "pages-grid-lg-4" => 992,
-                        "pages-grid-md-6" => 768,
-                        "pages-grid-sm-12" => 576,
-                    ];
-                    break;
-
-                case "6":
-                    $col = "col-12 col-md-6";
-                    $grid = [
-                        "pages-grid-xl-6" => 1200,
-                        "pages-grid-lg-6" => 992,
-                        "pages-grid-md-6" => 768,
-                        "pages-grid-sm-12" => 576,
-                    ];
-                    break;
-
-                case "3":
-                    $col = "col-12 col-md-6 col-lg-3";
-                    $grid = [
-                        "pages-grid-xl-3" => 1200,
-                        "pages-grid-lg-3" => 992,
-                        "pages-grid-md-6" => 768,
-                        "pages-grid-sm-12" => 576,
-                    ];
-                    break;
-
-            };
+            $colGrid = $this->setGrid($colLg);
             $view->with("perRow", $colLg);
-            $view->with("col", $col);
-            $view->with("grid", $grid);
+            $view->with("col", $colGrid[0]);
+            $view->with("grid", $colGrid[1]);
+        });
+        view()->composer([
+            "site-pages::site.pages.includes.grid"
+        ], function (View $view) {
+            $colLg = config("site-pages.pagesLgGrid");
+            $colGrid = $this->setGrid($colLg);
+            $view->with("perRow", $colLg);
+            $view->with("col", $colGrid[0]);
+            $view->with("grid", $colGrid[1]);
         });
         view()->composer("site-pages::site.includes.folders-menu", function (View $view){
             $view->with("foldersTree", FolderActions::getTree());
@@ -147,6 +125,41 @@ class PagesServiceProvider extends ServiceProvider
       
     }
 
+    protected function setGrid($colLg){
+        switch ($colLg){
+            case "4":
+                $col = "col-12 col-md-6 col-lg-4";
+                $grid = [
+                    "pages-grid-xl-4" => 1200,
+                    "pages-grid-lg-4" => 992,
+                    "pages-grid-md-6" => 768,
+                    "pages-grid-sm-12" => 576,
+                ];
+                break;
+
+            case "6":
+                $col = "col-12 col-md-6";
+                $grid = [
+                    "pages-grid-xl-6" => 1200,
+                    "pages-grid-lg-6" => 992,
+                    "pages-grid-md-6" => 768,
+                    "pages-grid-sm-12" => 576,
+                ];
+                break;
+
+            case "3":
+                $col = "col-12 col-md-6 col-lg-3";
+                $grid = [
+                    "pages-grid-xl-3" => 1200,
+                    "pages-grid-lg-3" => 992,
+                    "pages-grid-md-6" => 768,
+                    "pages-grid-sm-12" => 576,
+                ];
+                break;
+
+        };
+        return [$col, $grid];
+    }
     /**
      * Register services.
      *
