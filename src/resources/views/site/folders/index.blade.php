@@ -17,7 +17,8 @@
 @endsection
 
 @section("contents")
-    @isset($folder)
+
+    @if(isset($folder) && isset($folder->short))
         <div class="row">
             <div class="col-12">
                 <p class="text-muted">
@@ -25,21 +26,25 @@
                 </p>
             </div>
         </div>
-    @endisset
-    <div class="row">
-        @foreach ($folders as $item)
-            <div class="{{ $col }} folder-teaser-cover">
-                @include("site-pages::site.folders.includes.teaser", ["folder" => $item , "grid" => $grid])
-            </div>
-        @endforeach
-    </div>
-    @isset($folder)
+    @endif
+
+    @if($folders->count() > 0)
+        <div class="row">
+            @foreach ($folders as $item)
+                <div class="{{ $col }} folder-teaser-cover">
+                    @include("site-pages::site.folders.includes.teaser", ["folder" => $item , "grid" => $grid])
+                </div>
+            @endforeach
+        </div>
+    @endif
+
+    @if(isset($folder) && isset($folder->description))
         <div class="row">
             <div class="col-12">
                 {!! $folder->description !!}
             </div>
         </div>
-    @endisset
+    @endif
 @endsection
 @push("svg")
     @includeIf("site-pages::layouts.svg")

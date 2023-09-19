@@ -19,7 +19,7 @@
             </div>
         @endisset
 
-        @if( ! empty($page->blockGroups) ? $groups = $page->blockGroupsNotInTemplates(["site-blocks::site.block-groups.templates.tab"])->get() : false)
+        @if( ! empty($page->blockGroups) && ($groups = $page->blockGroupsNotInTemplates(["site-blocks::site.block-groups.templates.tab"])->get())->count() > 0)
             <div class="page-simple__groups">
                 @foreach($groups as $group)
                     @includeIf($group->template, ["group" => $group, "blocks" => $group->getBlocksCache()])
@@ -32,39 +32,38 @@
         @include("site-pages::site.pages.simple.sidebar", ["img" => $page->image, "title" => $page->title, "folder" => $page->folder->title])
     </div>
 
-    @if( ! empty($page->blockGroups) ? $groups = $page->blockGroupsByTemplate("site-blocks::site.block-groups.templates.tab")->get() : false)
+    @if( ! empty($page->blockGroups) && ($groups = $page->blockGroupsByTemplate("site-blocks::site.block-groups.templates.tab")->get())->count() > 0)
         <div class="col-12 mt-5">
             <div class="page-simple__groups">
                 @includeIf("site-blocks::site.block-groups.templates.tab-pills", ["groups" => $groups])
             </div>
         </div>
     @endif
+    @if ($gallery->count() > 0)
+        <div class="col-12 mt-5">
+            @if(config("site-pages.siteSimplePageGalleryHeader", false))
+                <h2 class="h2 page-simple__header">{{ config("site-pages.siteSimplePageGalleryHeader") }}</h2>
+            @endif
+        </div>
 
-    <div class="col-12 mt-5">
-        @if(config("site-pages.siteSimplePageGalleryHeader", false))
-            <h2 class="h2 page-simple__header">{{ config("site-pages.siteSimplePageGalleryHeader") }}</h2>
-        @endif
-    </div>
-
-@foreach ($gallery as $item)
-    @if ($loop->first || ($loop->index +1) % 6 == 0 || ($loop->index +1) % 6 == 1 )
-            @php($grid = ["lg-grid-6" => 992, "md-grid-6" => 768, "sm-grid-6" => 576])
-            @php($lg = "")
-            @else
-            @php($grid = ["lg-grid-3" => 992, "md-grid-6" => 768, "sm-grid-6" => 576])
-            @php($lg = " col-lg-3")
+        @foreach ($gallery as $item)
+            @if ($loop->first || ($loop->index +1) % 6 == 0 || ($loop->index +1) % 6 == 1 )
+                    @php($grid = ["lg-grid-6" => 992, "md-grid-6" => 768, "sm-grid-6" => 576])
+                    @php($lg = "")
+                    @else
+                    @php($grid = ["lg-grid-3" => 992, "md-grid-6" => 768, "sm-grid-6" => 576])
+                    @php($lg = " col-lg-3")
+            @endif
+                    <div class="col-12 col-sm-6{{ $lg }} mb-4 text-center">
+                        @img([
+                        "image" => $item,
+                        "template" => "pages-grid-sm-12",
+                        "lightbox" => "lightGroupPage".$page->id,
+                        "grid" => $grid,
+                        "imgClass" => "img-fluid rounded",
+                        ])
+                    </div>
+            @endforeach
     @endif
-            <div class="col-12 col-sm-6{{ $lg }} mb-4 text-center">
-                @img([
-                "image" => $item,
-                "template" => "pages-grid-sm-12",
-                "lightbox" => "lightGroupPage".$page->id,
-                "grid" => $grid,
-                "imgClass" => "img-fluid rounded",
-                ])
-            </div>
-    @endforeach
-    
-   
 </div>
 
