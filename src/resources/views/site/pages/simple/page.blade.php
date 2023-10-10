@@ -19,7 +19,7 @@
             </div>
         @endisset
 
-        @if( ! empty($page->blockGroups) && ($groups = $page->blockGroupsNotInTemplates(["site-blocks::site.block-groups.templates.tab"])->get())->count() > 0)
+        @if( $groups)
             <div class="page-simple__groups">
                 @foreach($groups as $group)
                     @includeIf($group->template, ["group" => $group, "blocks" => $group->getBlocksCache()])
@@ -32,7 +32,7 @@
         @include("site-pages::site.pages.simple.sidebar", ["img" => $page->image, "title" => $page->title, "folder" => $page->folder->title])
     </div>
 
-    @if( ! empty($page->blockGroups) && ($tabs = $page->blockGroupsByTemplate("site-blocks::site.block-groups.templates.tab")->get())->count() > 0)
+    @if( $tabs)
         <div class="col-12 mt-5">
             <div class="page-simple__groups">
                 @includeIf("site-blocks::site.block-groups.templates.tab-pills", ["tabs" => $tabs])

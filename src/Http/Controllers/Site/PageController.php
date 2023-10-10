@@ -26,11 +26,17 @@ class PageController extends Controller
             $siteBreadcrumb = FolderActions::getSiteBreadcrumb($folder, true);
             $pageMetas = Meta::getByModelKey($page);
 
+            if (!empty($page->blockGroups)){
+                if (empty($groups = $page->blockGroupsNotInTemplates(["site-blocks::site.block-groups.templates.tab"])))
+                    $groups = null;
+                if (empty($tabs = $page->blockGroupsByTemplates(["site-blocks::site.block-groups.templates.tab"])))
+                    $tabs = null;
+            }
             return view(
                 "site-pages::site.pages.show",
                 config("site-pages.siteBreadcrumbs", false)?
-                    compact("page", "siteBreadcrumb", "gallery", "pageMetas", "folder"):
-                    compact("page", "gallery", "pageMetas", "folder")
+                    compact("page", "siteBreadcrumb", "gallery", "pageMetas", "folder","groups","tabs"):
+                    compact("page", "gallery", "pageMetas", "folder", "groups", "tabs")
             );
         }
         else
