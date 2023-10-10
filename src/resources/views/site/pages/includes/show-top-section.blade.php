@@ -146,8 +146,8 @@
                @includeIf($group->template, ["group" => $group, "blocks" => $group->getBlocksCache()])
            @endforeach
        @endif
-       @if( ! empty($page->blockGroups) && ($groups = $page->blockGroupsByTemplate("site-blocks::site.block-groups.templates.tab")->get())->count() > 0)
-           @includeIf("site-blocks::site.block-groups.templates.tab-pills", ["groups" => $groups])
+       @if( ! empty($page->blockGroups) && ($tabs = $page->blockGroupsByTemplate("site-blocks::site.block-groups.templates.tab")->get())->count() > 0)
+           @includeIf("site-blocks::site.block-groups.templates.tab-pills", ["tabs" => $tabs])
        @endif
    </div>
 </div>

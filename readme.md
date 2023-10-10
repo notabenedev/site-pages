@@ -78,6 +78,10 @@
 - sitePageShowFormInputDate - заголовок поля формы
 - sitePageShowFormInputTitle" - заголовок поля формы
 
+## v3.1.5
+Обновлены шаблоны вывода групп блоков типа Табы  (tabs)
+Проверить переопределение:
+- site.pages.show, site.pages.includes.show-top-section, site.pages.simple.page
 ## v3.1.4
 Обновлены шаблоны вывода страниц  (не показывает стороку блоков или галареи, если нет элементов)
 site-pages::site.pages.show site-pages::site.pages.simple.page  site-pages::site.pages.includes.show-top-section

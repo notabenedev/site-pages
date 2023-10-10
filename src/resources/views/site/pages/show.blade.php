@@ -8,16 +8,6 @@
         <div class="col-12">
             <div class="page-show__cover">
                 @include("site-pages::site.pages.includes.show-top-section")
-                <div class="col-12 page-show__groups">
-                    @if( ! empty($page->blockGroups) && ($groups = $page->blockGroupsNotInTemplates(["site-blocks::site.block-groups.templates.tab"])->get())->count() > 0)
-                        @foreach($groups as $group)
-                            @includeIf($group->template, ["group" => $group, "blocks" => $group->getBlocksCache()])
-                        @endforeach
-                    @endif
-                    @if( ! empty($page->blockGroups) && ($groups = $page->blockGroupsByTemplate("site-blocks::site.block-groups.templates.tab")->get())->count() > 0)
-                         @includeIf("site-blocks::site.block-groups.templates.tab-pills", ["groups" => $groups])
-                    @endif
-                </div>
             </div>
         </div>
     </div>
