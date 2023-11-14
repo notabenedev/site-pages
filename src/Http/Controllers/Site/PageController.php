@@ -32,6 +32,10 @@ class PageController extends Controller
                 if (empty($tabs = $page->blockGroupsByTemplates(["site-blocks::site.block-groups.templates.tab"])))
                     $tabs = null;
             }
+            else{
+                $groups = null;
+                $tabs = null;
+            }
             return view(
                 "site-pages::site.pages.show",
                 config("site-pages.siteBreadcrumbs", false)?

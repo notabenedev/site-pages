@@ -78,6 +78,8 @@
 - sitePageShowFormInputDate - заголовок поля формы
 - sitePageShowFormInputTitle" - заголовок поля формы
 
+## 3.2.1
+Обновлен контроллер site/PageCintroller
 ## 3.2.0
 Обновлены шаблоны вывода групп блоков (в тч Табы (tabs)) 
 - cвязка с site-blocks ^v1.1
