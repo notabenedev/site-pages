@@ -16,7 +16,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <form action="{{ $fromRoute }}" method="get" class="form-inline">
+                <form action="{{ $fromRoute }}" method="get" class="d-lg-flex">
                     <label for="title" class="sr-only">Заголовок</label>
                     <input type="text"
                            id="title"

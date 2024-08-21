@@ -100,7 +100,6 @@ class PagesMakeCommand extends BaseConfigModelCommand
     protected $jsIncludes = [
         "app" => [
             "site-pages/page-carousel",
-            "site-pages/page-collapse",
             "site-pages/pages-modal",
         ],
     ];

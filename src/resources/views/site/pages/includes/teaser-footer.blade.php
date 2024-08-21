@@ -2,8 +2,8 @@
     <div class="mr-auto">
         <a class="btn btn-primary page-teaser__btn"
            @if (config("site-pages.showPageModal"))
-           data-toggle="modal"
-           data-target="#showPage{{ $page->slug }}Modal"
+           data-bs-toggle="modal"
+           data-bs-target="#showPage{{ $page->slug }}Modal"
            href="#"
            @else
            href="{{ route("site.pages.show", ["page" => $page]) }}"
@@ -13,12 +13,12 @@
         </a>
     </div>
 
-    <div class="my-auto ml-auto text-right">
+    <div class="my-auto ms-auto text-right">
         <a href="#"
            class="page-teaser__lnk"
-           data-toggle="modal"
-           data-target="#getPageQuestionModal"
-           data-whatever="{{ $page->folder->title .": ". $page->title }}">
+           data-bs-toggle="modal"
+           data-bs-target="#getPageQuestionModal"
+           data-bs-whatever="{{ $page->folder->title .": ". $page->title }}">
             Задать вопрос
         </a>
     </div>

@@ -37,7 +37,7 @@
     width: 100%;
     list-style: none;
     padding-left: 0;
-    margin-bottom: $grid-gutter-width / 2;
+    margin-bottom: $grid-gutter-width * .5;
     ul {
       margin-bottom: 0;
     }

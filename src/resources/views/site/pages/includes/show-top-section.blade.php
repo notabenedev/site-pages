@@ -21,6 +21,7 @@
                 "template" => "pages-grid-sm-12",
                 "lightbox" => "lightGroupPage".$page->id,
                 "grid" => [
+                "pages-grid-xxl-6" => 1400,
                 "pages-grid-xl-6" => 1200,
                 "pages-grid-lg-6" => 992,
                 "pages-grid-md-12" => 768,
@@ -36,6 +37,7 @@
                     "template" => "pages-grid-sm-12",
                     "lightbox" => "lightGroupPage".$page->id,
                     "grid" => [
+                        "pages-grid-xxl-6" => 1400,
                         "pages-grid-xl-6" => 1200,
                         "pages-grid-lg-6" => 992,
                         "pages-grid-md-12" => 768,
@@ -100,27 +102,28 @@
             <p>
                 <button class="collapse show page-show__btn btn btn-primary"
                         id="collapseFormBtnShow"
-                        data-toggle="collapse"
-                        data-target=".multi-collapse"
+                        data-bs-toggle="collapse"
+                        data-bs-target=".multi-collapse"
                         role="button"
                         aria-expanded="false"
                         aria-controls="collapseForm">
                     {{ config("site-pages.sitePageShowBtnName") }}
                 </button>
             </p>
-            <p class="text-right">
-                <button class="collapse multi-collapse btn btn-secondary"
-                        type="button"
-                        id="collapseFormBtnHide"
-                        data-toggle="collapse"
-                        data-target=".multi-collapse"
-                        aria-expanded="false"
-                        aria-controls="collapseFormContainer collapseFormBtnShow"
-                title="Закрыть">
-                    <i class="fas fa-times"></i>
-                </button>
-            </p>
+
             <div class="collapse multi-collapse page-show__collapse" id="collapseFormContainer">
+                <p class="text-end">
+                    <button class="collapse multi-collapse btn btn-secondary"
+                            type="button"
+                            id="collapseFormBtnHide"
+                            data-bs-toggle="collapse"
+                            data-bs-target=".multi-collapse"
+                            role="button"
+                            aria-expanded="false"
+                            aria-controls="collapseForm">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </p>
                 @includeIf("site-pages::site.pages.includes.form", ["title" => $page->title, "folder" => $page->folder->title])
             </div>
 
@@ -139,7 +142,7 @@
     </div>
 </div>
 
-@if($groups)
+@if(isset($groups) && count($groups)>0)
     <div class="col-12">
         <div class="page-show__groups">
             @foreach($groups as $group)
@@ -148,7 +151,7 @@
         </div>
     </div>
 @endif
-@if($tabs)
+@if(isset($tabs) && count($tabs)>0)
     <div class="col-12">
         <div class="page-show__groups">
             @includeIf("site-blocks::site.block-groups.templates.tab-pills", ["tabs" => $tabs])

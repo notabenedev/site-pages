@@ -11,10 +11,10 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "portedcheese/base-settings": "^v3.0 | ^v4.0",
-        "portedcheese/seo-integration": "^v1.4",
-        "portedcheese/ajax-forms": "^v1.7",
-        "portedcheese/admin-site-menu": "^v1.6"
+        "portedcheese/base-settings": "^5.0",
+        "portedcheese/seo-integration": "^1.5",
+        "portedcheese/ajax-forms": "^2.0",
+        "portedcheese/admin-site-menu": "^2.0"
     },
     "autoload": {
         "psr-4": {

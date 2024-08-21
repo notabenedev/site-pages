@@ -21,6 +21,9 @@ use Notabenedev\SitePages\Filters\PagesGridSm6;
 use Notabenedev\SitePages\Filters\PagesGridXl3;
 use Notabenedev\SitePages\Filters\PagesGridXl4;
 use Notabenedev\SitePages\Filters\PagesGridXl6;
+use Notabenedev\SitePages\Filters\PagesGridXxl3;
+use Notabenedev\SitePages\Filters\PagesGridXxl4;
+use Notabenedev\SitePages\Filters\PagesGridXxl6;
 use Notabenedev\SitePages\Filters\PagesShowThumb;
 use Notabenedev\SitePages\Listeners\FolderIdsInfoClearCache;
 use Notabenedev\SitePages\Listeners\FolderPagesIdsClearCache;
@@ -130,6 +133,7 @@ class PagesServiceProvider extends ServiceProvider
             case "4":
                 $col = "col-12 col-md-6 col-lg-4";
                 $grid = [
+                    "pages-grid-xxl-4" => 1400,
                     "pages-grid-xl-4" => 1200,
                     "pages-grid-lg-4" => 992,
                     "pages-grid-md-6" => 768,
@@ -140,6 +144,7 @@ class PagesServiceProvider extends ServiceProvider
             case "6":
                 $col = "col-12 col-md-6";
                 $grid = [
+                    "pages-grid-xxl-6" => 1400,
                     "pages-grid-xl-6" => 1200,
                     "pages-grid-lg-6" => 992,
                     "pages-grid-md-6" => 768,
@@ -150,6 +155,7 @@ class PagesServiceProvider extends ServiceProvider
             case "3":
                 $col = "col-12 col-md-6 col-lg-3";
                 $grid = [
+                    "pages-grid-xxl-3" => 1400,
                     "pages-grid-xl-3" => 1200,
                     "pages-grid-lg-3" => 992,
                     "pages-grid-md-6" => 768,
@@ -194,6 +200,9 @@ class PagesServiceProvider extends ServiceProvider
     {
         $imagecache = app()->config['imagecache.templates'];
 
+        $imagecache['pages-grid-xxl-6'] = PagesGridXxl6::class;
+        $imagecache['pages-grid-xxl-4'] = PagesGridXxl4::class;
+        $imagecache['pages-grid-xxl-3'] = PagesGridXxl3::class;
         $imagecache['pages-grid-xl-6'] = PagesGridXl6::class;
         $imagecache['pages-grid-xl-4'] = PagesGridXl4::class;
         $imagecache['pages-grid-xl-3'] = PagesGridXl3::class;

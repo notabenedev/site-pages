@@ -1,23 +1,18 @@
-(function ($) {
-    $(document).ready(function (event) {
-        modalPageData('#getPageQuestionModal',"#title-modal");
-    });
+document.addEventListener('DOMContentLoaded', function(){
+    // modal whatever fill
+    const pageQuestionModal = document.getElementById('getPageQuestionModal')
+    if (pageQuestionModal) {
+        pageQuestionModal.addEventListener('show.bs.modal', event => {
+            // Button that triggered the modal
+            const button = event.relatedTarget
+            // Extract info from data-bs-* attributes
+            const recipient = button.getAttribute('data-bs-whatever')
+            // If necessary, you could initiate an Ajax request here
+            // and then do the updating in a callback.
 
-    function modalPageData($id, $inputId) {
-        if ($($id).length){
-            $($id).on('show.bs.modal', function (event) {
-                var button = $(event.relatedTarget) // Button that triggered the modal
-                var recipient = button.data('whatever') // Extract info from data-* attributes
-                // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-                // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-                var modal = $(this)
-                modal.find($inputId).val(recipient)
-                // var $gallery = modal.find('.page-gallery-top');
-                // $gallery.flickity('reloadCells');
-                // var $gallery = modal.find('.page-gallery-thumbs');
-                // $gallery.flickity('reloadCells');
-            })
-        }
+            // Update the modal's content.
+            const modalBodyInput = pageQuestionModal.querySelector('#title-modal')
+            modalBodyInput.value = recipient
+        })
     }
-
-})(jQuery);
+});

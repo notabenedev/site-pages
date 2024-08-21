@@ -4,8 +4,9 @@
         "image" => $img,
         "template" => "pages-grid-sm-12",
         "grid" => [
-        "pages-grid-xl-6" => 1200,
-        "pages-grid-lg-6" => 992,
+        "pages-grid-xxl-4" => 1400,
+        "pages-grid-xl-4" => 1200,
+        "pages-grid-lg-4" => 992,
         "pages-grid-md-12" => 768,
         ],
         "imgClass" => "img-fluid rounded mb-4",

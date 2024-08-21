@@ -7,8 +7,8 @@
     <li class="nav-item {{ $active ? " active" : "" }}">
         <a href="#"
            class="nav-link"
-           data-toggle="collapse"
-           data-target="#collapse-folders-menu"
+           data-bs-toggle="collapse"
+           data-bs-target="#collapse-folders-menu"
            aria-controls="#collapse-folders-menu"
            aria-expanded="{{ $active ? "true" : "false" }}">
             <i class="fas fa-stream"></i>

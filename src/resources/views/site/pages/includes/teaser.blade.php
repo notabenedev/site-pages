@@ -2,8 +2,8 @@
     <div class="page-teaser__image-cover">
         <a class="page-teaser__image-lnk"
            @if (config("site-pages.showPageModal"))
-           data-toggle="modal"
-           data-target="#showPage{{ $page->slug }}Modal"
+           data-bs-toggle="modal"
+           data-bs-target="#showPage{{ $page->slug }}Modal"
            href="#"
            @else
            href="{{ route("site.pages.show", ["page" => $page]) }}"
@@ -30,8 +30,8 @@
         <div class="page-teaser__info">
             <a class="page-teaser__title"
                @if (config("site-pages.showPageModal"))
-               data-toggle="modal"
-               data-target="#showPage{{ $page->slug }}Modal"
+               data-bs-toggle="modal"
+               data-bs-target="#showPage{{ $page->slug }}Modal"
                href="#"
                @else
                href="{{ route("site.pages.show", ["page" => $page]) }}"
