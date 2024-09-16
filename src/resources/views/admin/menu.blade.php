@@ -17,7 +17,7 @@
 
         <div id="collapse-folders-menu"
              class="collapse"
-             data-parent="#accordionSidebar">
+             data-bs-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 @can("viewAny", \App\Folder::class)
                     <a href="{{ route("admin.folders.index") }}"
@@ -40,7 +40,7 @@
            class="nav-link dropdown-toggle{{ $active ? " active" : "" }}"
            role="button"
            id="folders-menu"
-           data-toggle="dropdown"
+           data-bs-toggle="dropdown"
            aria-haspopup="true"
            aria-expanded="false">
             <i class="fas fa-stream"></i>
