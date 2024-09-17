@@ -48,10 +48,10 @@
 
         @foreach ($gallery as $item)
             @if ($loop->first || ($loop->index +1) % 6 == 0 || ($loop->index +1) % 6 == 1 )
-                    @php($grid = ["lg-grid-6" => 992, "md-grid-6" => 768, "sm-grid-6" => 576])
+                    @php($grid = ["xxl-grid-6"=> 1400, "xl-grid-6" => 1200, "lg-grid-6" => 992, "md-grid-6" => 768, "sm-grid-6" => 576])
                     @php($lg = "")
                     @else
-                    @php($grid = ["lg-grid-3" => 992, "md-grid-6" => 768, "sm-grid-6" => 576])
+                    @php($grid = ["xxl-grid-3"=> 1400, "xl-grid-3" => 1200, "lg-grid-3" => 992, "md-grid-6" => 768, "sm-grid-6" => 576])
                     @php($lg = " col-lg-3")
             @endif
                     <div class="col-12 col-sm-6{{ $lg }} mb-4 text-center">
