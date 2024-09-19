@@ -34,7 +34,7 @@
                     @can("create", \App\Folder::class)
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle {{ $currentRoute == 'admin.folders.create-child' ? " active" : "" }}"
-                               data-toggle="dropdown"
+                               data-bs-toggle="dropdown"
                                href="#"
                                role="button"
                                aria-haspopup="true"
