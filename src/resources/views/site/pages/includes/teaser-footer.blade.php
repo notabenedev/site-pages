@@ -13,7 +13,7 @@
         </a>
     </div>
 
-    <div class="my-auto ms-auto text-right">
+    <div class="my-auto ms-auto text-end">
         <a href="#"
            class="page-teaser__lnk"
            data-bs-toggle="modal"
