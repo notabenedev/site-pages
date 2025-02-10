@@ -25,7 +25,7 @@
         <div class="card">
             @can("update", $page)
                 <div class="card-header">
-                    <button type="button" class="btn btn-warning collapse show collapseChangeFolder" data-toggle="modal" data-target="#changeFolder">
+                    <button type="button" class="btn btn-warning collapse show collapseChangeFolder" data-bs-toggle="modal" data-bs-target="#changeFolder">
                         Изменить категорию
                     </button>
                     <div class="collapse mt-3 collapseChangeFolder">
@@ -98,19 +98,19 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="changeFolderLabel">Вы уверены?</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
                         <button type="button"
                                 class="btn btn-primary"
-                                data-dismiss="modal"
-                                data-toggle="collapse"
-                                data-target=".collapseChangeFolder"
+                                data-bs-dismiss="modal"
+                                data-bs-toggle="collapse"
+                                data-bs-target=".collapseChangeFolder"
                                 aria-expanded="false"
                                 aria-controls="collapseChangeFolder">
                             Понятно
