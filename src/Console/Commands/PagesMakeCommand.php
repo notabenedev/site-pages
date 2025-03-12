@@ -101,7 +101,7 @@ class PagesMakeCommand extends BaseConfigModelCommand
         "app" => [
             "site-pages/page-carousel",
             "site-pages/pages-modal",
-            "site-pages/pages-collapse",
+            "site-pages/page-collapse",
         ],
     ];
 
