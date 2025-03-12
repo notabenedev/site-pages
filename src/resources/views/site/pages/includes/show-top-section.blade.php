@@ -101,26 +101,26 @@
         @if(config("site-pages.sitePageShowBtnName"))
             <p>
                 <button class="collapse show page-show__btn btn btn-primary"
-                        id="collapseFormBtnShow"
+                        id="collapseFormBtnShow{{ $page->id}}"
                         data-bs-toggle="collapse"
-                        data-bs-target=".multi-collapse"
+                        data-bs-target=".multi-collapse-{{ $page->id}}"
                         role="button"
                         aria-expanded="false"
-                        aria-controls="collapseForm">
+                        aria-controls="collapseFormContainer{{ $page->id}}">
                     {{ config("site-pages.sitePageShowBtnName") }}
                 </button>
             </p>
 
-            <div class="collapse multi-collapse page-show__collapse" id="collapseFormContainer">
+            <div class="collapse multi-collapse-{{ $page->id}} page-show__collapse" id="collapseFormContainer{{ $page->id}}">
                 <p class="text-end">
-                    <button class="collapse multi-collapse btn btn-secondary"
+                    <button class="collapse multi-collapse-{{ $page->id}} btn btn-secondary"
                             type="button"
-                            id="collapseFormBtnHide"
+                            id="collapseFormBtnHide{{ $page->id}}"
                             data-bs-toggle="collapse"
-                            data-bs-target=".multi-collapse"
+                            data-bs-target=".multi-collapse-{{ $page->id}}"
                             role="button"
                             aria-expanded="false"
-                            aria-controls="collapseForm">
+                            aria-controls="collapseFormContainer{{ $page->id}}">
                         <i class="fas fa-times"></i>
                     </button>
                 </p>

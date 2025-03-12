@@ -1,4 +1,11 @@
-## 4.0.0 Bootstrap 5
+## 4.0.8 Page-collapse для modal-view
+- php artisan vendor:publish --provider="Notabenedev\SitePages\PagesServiceProvider" --tag=public --force
+- если был удален - восстановить файл page-collapse.js: 
+php artisan make:pages --js
+
+Обновлен шаблон site.pages.includes.show-top-section
+
+## 4.0.0-4.0.6  Bootstrap 5
 - Новый фильтр для xxl: pages-grid-xxl-4, pages-grid-xxl-3, pages-grid-xxl-6
 - Переписан на js scripts/pages-modal.js
 - Правки в стилях folders-menu, folder, page

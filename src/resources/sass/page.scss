@@ -105,7 +105,6 @@
     }
 
     &__cover {
-        background-color: $white;
         padding-top: $grid-gutter-width;
         padding-bottom: $grid-gutter-width;
         @include border-radius($card-border-radius);
