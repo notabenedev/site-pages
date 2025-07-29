@@ -76,7 +76,7 @@
                                 <i class="fas fa-trash-alt text-danger"></i>
                             </button>
                             <confirm-form :id="'{{ "delete-form-page-{$page->id}" }}'">
-                                <template>
+                                <template v-if="true">
                                     <form action="{{ route('admin.pages.destroy', ['page' => $page]) }}"
                                           id="delete-form-page-{{ $page->id }}"
                                           class="btn-group"

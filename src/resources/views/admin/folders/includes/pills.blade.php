@@ -99,7 +99,7 @@
                                 <i class="fas fa-trash-alt text-danger"></i>
                             </button>
                             <confirm-form :id="'{{ "delete-form-folder-{$folder->id}" }}'">
-                                <template>
+                                <template v-if="true">
                                     <form action="{{ route('admin.folders.destroy', ['folder' => $folder]) }}"
                                           id="delete-form-folder-{{ $folder->id }}"
                                           class="btn-group"
